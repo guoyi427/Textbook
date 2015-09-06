@@ -61,6 +61,7 @@
     [self createRenderBuffers];
 }
 
+/// 释放
 - (void)destroyRenderBuffers
 {
     if (_resolveFramebuffer) {

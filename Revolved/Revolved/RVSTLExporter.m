@@ -91,10 +91,26 @@ static inline void fillFace(FaceStruct *face, GLKVector3 v1, GLKVector3 v2, GLKV
                  */
                 memcpy(&bandFaces[(2 * stripe + 0)*FaceStructSize], &face, FaceStructSize);
                 
+                printf("\n\
+                       x = %f y = %f z = %f \n\
+                       r = %f g = %f b = %f \n\
+                       s = %f t = %f p = %f\n\n",
+                       face.v1.x,face.v1.y,face.v1.z,
+                       face.v1.r,face.v1.g,face.v1.b,
+                       face.v1.s,face.v1.t,face.v1.p);
+                
                 face.normal = GLKVector3CrossProduct(GLKVector3Subtract(d, b), GLKVector3Subtract(c, b));
                 face.v1 = d;
                 face.v2 = b;
                 face.v3 = c;
+                
+                printf("\n\
+                       x = %f y = %f z = %f \n\
+                       r = %f g = %f b = %f \n\
+                       s = %f t = %f p = %f\n\n",
+                       face.v1.x,face.v1.y,face.v1.z,
+                       face.v1.r,face.v1.g,face.v1.b,
+                       face.v1.s,face.v1.t,face.v1.p);
                 
                 memcpy(&bandFaces[(2 * stripe + 1)*FaceStructSize], &face, FaceStructSize);
                 
