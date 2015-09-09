@@ -28,8 +28,7 @@ enum
     NUM_ATTRIBUTES
 };
 
-GLfloat gCubeVertexData[13328 * 18] = {};
-/*
+GLfloat gCubeVertexData[216] =
 {
     // Data layout for each line below is:
     // positionX, positionY, positionZ,     normalX, normalY, normalZ,
@@ -75,7 +74,7 @@ GLfloat gCubeVertexData[13328 * 18] = {};
     -0.5f, -0.5f, -0.5f,       0.0f, 0.0f, 0.0f,
     -0.5f, 0.5f, -0.5f,        0.0f, 0.0f, 0.0f
 };
-*/
+
 /// stl 结构体
 typedef struct FaceStruct {
     GLKVector3 normal;
@@ -121,7 +120,7 @@ static const GLfloat StlScale = 1.0f;
     [super viewDidLoad];
     
     //  准备数据
-    [self _prepareData];
+//    [self _prepareData];
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 
@@ -242,7 +241,7 @@ static const GLfloat StlScale = 1.0f;
 {
     [EAGLContext setCurrentContext:self.context];
     
-    [self loadShaders];
+//    [self loadShaders];
     
     self.effect = [[GLKBaseEffect alloc] init];
     self.effect.light0.enabled = GL_TRUE;
@@ -261,7 +260,7 @@ static const GLfloat StlScale = 1.0f;
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 24, BUFFER_OFFSET(0));
     glEnableVertexAttribArray(GLKVertexAttribNormal);
     glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 24, BUFFER_OFFSET(12));
-    
+
     glBindVertexArrayOES(0);
 }
 
