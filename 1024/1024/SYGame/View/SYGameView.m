@@ -152,7 +152,7 @@ const NSUInteger Count_gameCell = 6;
         {
             //  向左滑
             for (int i = 0; i < Count_gameCell; i ++) {
-                for (int j = Count_gameCell - 1; j > 0; j --) {
+                for (int j = 1; j < Count_gameCell - 1; j ++) {
                     int k = j;
                     /// 左边为0  就交换
                     while (k > 0 &&
@@ -163,7 +163,7 @@ const NSUInteger Count_gameCell = 6;
                         SYGameCell *leftCell = _gameCellsCache[i][k-1];
                         leftCell.number = rightCell.number;
                         rightCell.number = 0;
-                        k --;
+                        k ++;
                         needAddNewCell = YES;
                     }
                 }
