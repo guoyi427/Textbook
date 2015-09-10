@@ -185,8 +185,8 @@ const NSUInteger Count_gameCell = 6;
             CGFloat left_x = 4;
             /// 最上可用 y坐标
             CGFloat top_y = 4;
-            for (int i = 1; i < section_1.count - 1; i ++) {
-                SYGameCell *currentCell = section_1[i];
+            while (section_1.count) {
+                SYGameCell *currentCell = section_1.firstObject;
                 //  判断是否为同一类
                 if (currentCell.number == lastCell.number) {
                     /// 合成后的单元
@@ -197,10 +197,14 @@ const NSUInteger Count_gameCell = 6;
                     sumCell.frame = CGRectMake(left_x, top_y, _width_cell, _width_cell);
                     [sectionBefore_1 addObject:sumCell];
                     
+                    left_x += _width_cell;
+                    top_y += _width_cell;
+                    
                 } else {
                     /// 不是同一类
                     
                 }
+
             }
             
         }
