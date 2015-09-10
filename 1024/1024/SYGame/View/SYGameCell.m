@@ -11,6 +11,9 @@
 //  View
 #import "Masonry.h"
 
+//  Model
+#import "UIColor+ShuaiYi.h"
+
 @interface SYGameCell ()
 {
     //  Data
@@ -43,7 +46,7 @@
 #pragma mark - Prepare 
 
 - (void)_prepareData {
-    
+    _number = 0;
 }
 
 - (void)_prepareUI {
@@ -71,5 +74,22 @@
         make.height.equalTo(weakSelf).offset(-4);
     }];
 }
+
+#pragma mark - Set Action
+
+- (void)setNumber:(NSUInteger)number {
+    if (_number != number) {
+        _number = number;
+        /// 更新 cell 背景颜色
+        _discolorView.backgroundColor = [UIColor colorWithNumber:number];
+    }
+}
+
+#pragma mark - Get Action
+
+//- (NSString *)description {
+//    NSString *description = [NSString stringWithFormat:@"number = %lu",(unsigned long)_number];
+//    return description;
+//}
 
 @end

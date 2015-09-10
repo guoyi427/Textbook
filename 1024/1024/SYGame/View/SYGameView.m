@@ -57,7 +57,11 @@ const NSUInteger Count_gameCell = 6;
 - (void)_prepareData {
     _screenHeight = [UIScreen mainScreen].bounds.size.height;
     _screenWidth = [UIScreen mainScreen].bounds.size.width;
-    _gameCellsCache = [NSMutableArray arrayWithCapacity:Count_gameCell * Count_gameCell];
+    _gameCellsCache = [NSMutableArray arrayWithCapacity:Count_gameCell];
+    for (int i = 0; i < Count_gameCell; i ++) {
+        NSMutableArray *sectionArray = [NSMutableArray arrayWithCapacity:Count_gameCell];
+        [_gameCellsCache addObject:sectionArray];
+    }
     //  单元格宽
     _width_cell = (_screenWidth - 8) / Count_gameCell;
 }
@@ -83,38 +87,35 @@ const NSUInteger Count_gameCell = 6;
 
 /// 准备 游戏单元 6 * 6
 - (void)_prepareGameCells {
+
+    //  随机两个单元格位置
+    NSUInteger x_cell1 = arc4random()%Count_gameCell;
+    NSUInteger y_cell1 = arc4random()%Count_gameCell;
     
-    //  随意两个单元格位置
-    /// 上一个单元格的x
-    NSUInteger x_lastCell = 0;
-    /// 上一个单元格的y
-    NSUInteger y_lastCell = 0;
-    for (int i = 0; i < 2; i ++) {
-        /// 本次单元格x
-        NSUInteger x_currentCell = arc4random()%Count_gameCell;
-        /// 本次单元格y
-        NSUInteger y_currentCell = arc4random()%Count_gameCell;
-        //  一致随机到和 上一次 xy 都不一致的位置
-        while (x_lastCell == x_currentCell &&
-               y_lastCell == y_currentCell) {
-            //  如果一致 就在随机一边
-            x_currentCell = arc4random()%Count_gameCell;
-            y_currentCell = arc4random()%Count_gameCell;
+    NSUInteger x_cell2 = arc4random()%Count_gameCell;
+    NSUInteger y_cell2 = arc4random()%Count_gameCell;
+    
+    while (x_cell1 == x_cell2 &&
+           y_cell1 == y_cell2) {
+        //  不能重合 重新来
+        x_cell2 = arc4random()%Count_gameCell;
+        y_cell2 = arc4random()%Count_gameCell;
+    }
+    
+    /// 准备所有按钮
+    for (int i = 0; i < Count_gameCell; i ++) {
+        for (int j = 0; j < Count_gameCell; j ++) {
+            SYGameCell *cell = [SYGameCell gameCell];
+            cell.frame = CGRectMake(j * _width_cell + 4, i * _width_cell + 4, _width_cell, _width_cell);
+            if ((j == x_cell1 && i == y_cell1) ||
+                (j == x_cell2 && i == y_cell2)) {
+                cell.number = 1;
+            }
+            [_centerView addSubview:cell];
+            //  加到缓存
+            NSMutableArray *sectionArray = _gameCellsCache[i];
+            [sectionArray addObject:cell];
         }
-        //  实例化 单元格
-        SYGameCell *cell = [SYGameCell gameCell];
-        cell.frame = CGRectMake(x_currentCell * _width_cell + 4,
-                                y_currentCell * _width_cell + 4,
-                                _width_cell,
-                                _width_cell);
-        cell.x = x_currentCell;
-        cell.y = y_currentCell;
-        [_centerView addSubview:cell];
-        //  更新位置缓存
-        x_lastCell = x_currentCell;
-        y_lastCell = y_lastCell;
-        //  将单元格视图 加入到缓存 用来做 整体位移 和 碰撞比较
-        [_gameCellsCache addObject:cell];
     }
 }
 
@@ -144,74 +145,82 @@ const NSUInteger Count_gameCell = 6;
 #pragma mark - GestureRecognizer Action 
 
 - (void)swipeGestureRecognizerAction:(UISwipeGestureRecognizer *)swipeGR {
+    /// 记录是否需要 添加新的单元
+    BOOL needAddNewCell = NO;
     switch (swipeGR.direction) {
         case UISwipeGestureRecognizerDirectionLeft:
         {
             //  向左滑
-            
-            /// 第一行 单元
-            NSMutableArray *section_1 = [NSMutableArray arrayWithCapacity:Count_gameCell];
-            /// 第二行 单元
-            NSMutableArray *section_2 = [NSMutableArray arrayWithCapacity:Count_gameCell];
-            /// 第三行 单元
-            NSMutableArray *section_3 = [NSMutableArray arrayWithCapacity:Count_gameCell];
-            /// 第四行 单元
-            NSMutableArray *section_4 = [NSMutableArray arrayWithCapacity:Count_gameCell];
-            //  遍历所有的单元
-            for (int i = 0; i < _gameCellsCache.count; i ++) {
-                SYGameCell *cell = _gameCellsCache[i];
-                NSLog(@"frame = %@ index = %lu x = %lu y = %lu",NSStringFromCGRect(cell.frame),cell.number,cell.x,cell.y);
-                if (cell.x == 0) {
-                    [section_1 addObject:cell];
-                } else if (cell.x == 1) {
-                    [section_2 addObject:cell];
-                } else if (cell.x == 2) {
-                    [section_3 addObject:cell];
-                } else {
-                    [section_4 addObject:cell];
+            for (int i = 0; i < Count_gameCell; i ++) {
+                for (int j = Count_gameCell - 1; j > 0; j --) {
+                    int k = j;
+                    /// 左边为0  就交换
+                    while (k > 0 &&
+                           k < Count_gameCell &&
+                           ((SYGameCell *)_gameCellsCache[i][k-1]).number == 0 &&
+                           ((SYGameCell *)_gameCellsCache[i][k]).number != 0) {
+                        SYGameCell *rightCell = _gameCellsCache[i][k];
+                        SYGameCell *leftCell = _gameCellsCache[i][k-1];
+                        leftCell.number = rightCell.number;
+                        rightCell.number = 0;
+                        k --;
+                        needAddNewCell = YES;
+                    }
                 }
             }
-            //  按照y 排序
-            [self _sortHorizonalCells:section_1];
-            [self _sortHorizonalCells:section_2];
-            [self _sortHorizonalCells:section_3];
-            [self _sortHorizonalCells:section_4];
-            //  处理每一个组的单元
-            /// 处理后的新缓存
-            NSMutableArray *sectionBefore_1 = [NSMutableArray arrayWithCapacity:Count_gameCell];
-            /// 上一个单元
-            SYGameCell *lastCell = section_1.firstObject;
-            /// 最左可用 x坐标
-            CGFloat left_x = 4;
-            /// 最上可用 y坐标
-            CGFloat top_y = 4;
-            while (section_1.count) {
-                SYGameCell *currentCell = section_1.firstObject;
-                //  判断是否为同一类
-                if (currentCell.number == lastCell.number) {
-                    /// 合成后的单元
-                    SYGameCell *sumCell = [SYGameCell gameCell];
-                    sumCell.number = currentCell.number + 1;
-                    sumCell.x = i - 1;
-                    sumCell.y = 0;
-                    sumCell.frame = CGRectMake(left_x, top_y, _width_cell, _width_cell);
-                    [sectionBefore_1 addObject:sumCell];
-                    
-                    left_x += _width_cell;
-                    top_y += _width_cell;
-                    
-                } else {
-                    /// 不是同一类
-                    
+            //  合并
+            for (int i = 0; i < Count_gameCell; i ++) {
+                for (int j = 0; j < Count_gameCell; j ++) {
+                    SYGameCell *cell = _gameCellsCache[i][j];
+                    //  判断是否与左边的相同   从左向右
+                    if (j > 0) {
+                        SYGameCell *leftCell = _gameCellsCache[i][j - 1];
+                        if (cell.number &&
+                            cell.number == leftCell.number) {
+                            leftCell.number ++;
+                            cell.number = 0;
+                            needAddNewCell = YES;
+                        }
+                    }
                 }
-
             }
-            
         }
             break;
         case UISwipeGestureRecognizerDirectionRight:
         {
             //  向右滑
+            for (int i = 0; i < Count_gameCell; i ++) {
+                for (int j = Count_gameCell - 1; j >= 0; j --) {
+                    int k = j;
+                    /// 左边为0  就交换
+                    while (k < Count_gameCell - 1 &&
+                           ((SYGameCell *)_gameCellsCache[i][k+1]).number == 0 &&
+                           ((SYGameCell *)_gameCellsCache[i][k]).number != 0) {
+                        SYGameCell *rightCell = _gameCellsCache[i][k+1];
+                        SYGameCell *leftCell = _gameCellsCache[i][k];
+                        rightCell.number = leftCell.number;
+                        leftCell.number = 0;
+                        k ++;
+                        needAddNewCell = YES;
+                    }
+                }
+            }
+            //  合并  从右向左
+            for (int i = 0; i < Count_gameCell; i ++) {
+                for (int j = Count_gameCell - 1; j > 0; j --) {
+                    SYGameCell *cell = _gameCellsCache[i][j];
+                    //  判断是否与左边的相同
+                    if (j > 0) {
+                        SYGameCell *leftCell = _gameCellsCache[i][j - 1];
+                        if (cell.number &&
+                            cell.number == leftCell.number) {
+                            cell.number ++;
+                            leftCell.number = 0;
+                            needAddNewCell = YES;
+                        }
+                    }
+                }
+            }
         }
             break;
         case UISwipeGestureRecognizerDirectionUp:
@@ -228,38 +237,33 @@ const NSUInteger Count_gameCell = 6;
         default:
             break;
     }
+
+    //  添加一个新的单元 如何 有合并或者 移动的话
+    if (needAddNewCell) {
+        NSUInteger x_newCell = arc4random()%Count_gameCell;
+        NSUInteger y_newCell = arc4random()%Count_gameCell;
+        while (((SYGameCell *)_gameCellsCache[x_newCell][y_newCell]).number != 0) {
+            x_newCell = arc4random()%Count_gameCell;
+            y_newCell = arc4random()%Count_gameCell;
+        }
+        ((SYGameCell *)_gameCellsCache[x_newCell][y_newCell]).number ++;
+    }
+    
+    //  更新界面
+    [self _uploadGameView];
 }
 
 #pragma mark - Private Methods
 
-/// 排序行
-- (void)_sortHorizonalCells:(NSMutableArray *)cells {
-    [cells sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        SYGameCell *cell1 = obj1;
-        SYGameCell *cell2 = obj2;
-        NSComparisonResult ordered = NSOrderedSame;
-        if (cell1.y > cell2.y) {
-            ordered = NSOrderedDescending;
-        } else if (cell2.y > cell1.y) {
-            ordered = NSOrderedAscending;
+/// 刷新页面
+- (void)_uploadGameView {
+    
+    for (int i = 0; i < Count_gameCell; i ++) {
+        for (int j = 0; j < Count_gameCell; j ++) {
+            SYGameCell *cell = _gameCellsCache[i][j];
+            cell.frame = CGRectMake(j * _width_cell + 4, i * _width_cell + 4, _width_cell, _width_cell);
         }
-        return ordered;
-    }];
-}
-
-/// 排序列
-- (void)_sortVerticalCells:(NSMutableArray *)cells {
-    [cells sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        SYGameCell *cell1 = obj1;
-        SYGameCell *cell2 = obj2;
-        NSComparisonResult ordered = NSOrderedSame;
-        if (cell1.x > cell2.x) {
-            ordered = NSOrderedDescending;
-        } else if (cell2.x > cell1.x) {
-            ordered = NSOrderedAscending;
-        }
-        return ordered;
-    }];
+    }
 }
 
 @end
