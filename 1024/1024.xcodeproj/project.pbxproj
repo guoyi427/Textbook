@@ -512,7 +512,7 @@
 				INFOPLIST_FILE = 1024/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8cc130b0-66cf-45a8-94fa-98f804a8f238";
+				PROVISIONING_PROFILE = "75992ea5-009d-4130-91b5-656d42da4512";
 			};
 			name = Debug;
 		};
@@ -524,7 +524,7 @@
 				INFOPLIST_FILE = 1024/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8cc130b0-66cf-45a8-94fa-98f804a8f238";
+				PROVISIONING_PROFILE = "75992ea5-009d-4130-91b5-656d42da4512";
 			};
 			name = Release;
 		};
@@ -581,6 +581,7 @@
 				28C442901BA030E3004A5EA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28C442911BA030E3004A5EA1 /* Build configuration list for PBXNativeTarget "1024Tests" */ = {
 			isa = XCConfigurationList;
@@ -589,6 +590,7 @@
 				28C442931BA030E3004A5EA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

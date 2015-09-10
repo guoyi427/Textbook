@@ -7,18 +7,22 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>6F3ED49E-A53F-49A0-A457-215F8F48E2FE</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>1024</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>BFE077AE6D04535D05F4804BFCC2FB0F3A829F73</key>
 		<string>https://github.com/guoyi427/Textbook.git</string>
+		<key>DB328B4CA328192361C6C488DBFE61BCE85C21A9</key>
+		<string>https://github.com/guoyi427/FirstAttention.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>1024/1024.xcodeproj/project.xcworkspace</string>
+	<string>1024/1024.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>BFE077AE6D04535D05F4804BFCC2FB0F3A829F73</key>
 		<string>../../..</string>
+		<key>DB328B4CA328192361C6C488DBFE61BCE85C21A9</key>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/guoyi427/Textbook.git</string>
@@ -28,6 +32,14 @@
 	<string>BFE077AE6D04535D05F4804BFCC2FB0F3A829F73</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DB328B4CA328192361C6C488DBFE61BCE85C21A9</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
