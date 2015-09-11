@@ -24,7 +24,8 @@ const NSUInteger Count_gameCell = 6.0f;
     CGFloat _screenHeight;
     /// 所有游戏单元的缓存数组
     NSMutableArray *_gameCellsCache;
-    /// 单元 宽度
+    /// 所有步骤的缓存 每个元素为 number
+    NSMutableArray *_historyCache;
     /// 单元格宽
     CGFloat _width_cell;
     
@@ -52,6 +53,10 @@ const NSUInteger Count_gameCell = 6.0f;
     return self;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Prepare
 
 - (void)_prepareData {
@@ -64,6 +69,11 @@ const NSUInteger Count_gameCell = 6.0f;
     }
     //  单元格宽
     _width_cell = (_screenWidth - 8) / Count_gameCell;
+    //  初始化历史缓存
+    _historyCache = [NSMutableArray array];
+    
+    //  注册通知中心
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(undoButtonNotification:) name:@"kUndoGame" object:nil];
 }
 
 - (void)_prepareUI {
@@ -117,6 +127,18 @@ const NSUInteger Count_gameCell = 6.0f;
             [sectionArray addObject:cell];
         }
     }
+
+    //  记录历史
+    NSMutableArray *numberArray = [NSMutableArray arrayWithCapacity:Count_gameCell];
+    for (int i = 0; i < Count_gameCell; i ++) {
+        NSMutableArray *sectionArray = [NSMutableArray arrayWithCapacity:Count_gameCell];
+        for (int j = 0; j < Count_gameCell; j ++) {
+            SYGameCell *cell = _gameCellsCache[i][j];
+            [sectionArray addObject:[NSNumber numberWithUnsignedInteger:cell.number]];
+        }
+        [numberArray addObject:sectionArray];
+    }
+    [_historyCache addObject:numberArray];
 }
 
 /// 准备骚动手势
@@ -145,6 +167,18 @@ const NSUInteger Count_gameCell = 6.0f;
 #pragma mark - GestureRecognizer Action 
 
 - (void)swipeGestureRecognizerAction:(UISwipeGestureRecognizer *)swipeGR {
+    //  记录历史
+    NSMutableArray *numberArray = [NSMutableArray arrayWithCapacity:Count_gameCell];
+    for (int i = 0; i < Count_gameCell; i ++) {
+        NSMutableArray *sectionArray = [NSMutableArray arrayWithCapacity:Count_gameCell];
+        for (int j = 0; j < Count_gameCell; j ++) {
+            SYGameCell *cell = _gameCellsCache[i][j];
+            [sectionArray addObject:[NSNumber numberWithUnsignedInteger:cell.number]];
+        }
+        [numberArray addObject:sectionArray];
+    }
+    [_historyCache addObject:numberArray];
+    
     /// 记录是否需要 添加新的单元
     BOOL needAddNewCell = NO;
     switch (swipeGR.direction) {
@@ -389,26 +423,29 @@ const NSUInteger Count_gameCell = 6.0f;
         }
         ((SYGameCell *)_gameCellsCache[x_newCell][y_newCell]).number ++;
     }
-    
-    //  更新界面
-    [self _uploadGameView];
 }
 
 #pragma mark - Private Methods
 
-/// 刷新页面
-- (void)_uploadGameView {
-    
-    
-    [UIView animateWithDuration:0.25 animations:^{
+
+#pragma mark - NotificationCenter Action
+
+- (void)undoButtonNotification:(NSNotification *)notification {
+    NSString *type = notification.object;
+    NSLog(@"type = %@",type);
+
+    if (_historyCache.count > 1) {
+        NSMutableArray *numberArray = _historyCache[_historyCache.count - 2];
+        
         for (int i = 0; i < Count_gameCell; i ++) {
             for (int j = 0; j < Count_gameCell; j ++) {
                 SYGameCell *cell = _gameCellsCache[i][j];
-                cell.frame = CGRectMake(j * _width_cell + 4, i * _width_cell + 4, _width_cell, _width_cell);
+                cell.number = [numberArray[i][j] unsignedIntegerValue];
             }
         }
-    }];
-   
+        [_historyCache removeLastObject];
+    }
 }
+
 
 @end
