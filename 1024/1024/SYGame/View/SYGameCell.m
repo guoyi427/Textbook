@@ -13,6 +13,7 @@
 
 //  Model
 #import "UIColor+ShuaiYi.h"
+#import "NSString+ShuaiYi.h"
 
 @interface SYGameCell ()
 {
@@ -21,6 +22,8 @@
     //  UI
     /// 变色块
     UIView *_discolorView;
+    /// 标签
+    UILabel *_titleLabel;
 }
 
 @end
@@ -73,6 +76,16 @@
         make.width.equalTo(weakSelf).offset(-4);
         make.height.equalTo(weakSelf).offset(-4);
     }];
+    
+    //  标签
+    _titleLabel = [[UILabel alloc] init];
+    _titleLabel.textColor = [UIColor whiteColor];
+    _titleLabel.font = [UIFont systemFontOfSize:20];
+    _titleLabel.adjustsFontSizeToFitWidth = YES;
+    [backgroundView addSubview:_titleLabel];
+    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(backgroundView);
+    }];
 }
 
 #pragma mark - Set Action
@@ -82,6 +95,7 @@
         _number = number;
         /// 更新 cell 背景颜色
         _discolorView.backgroundColor = [UIColor colorWithNumber:number];
+        _titleLabel.text = [NSString stringWithNumber:number];
     }
 }
 

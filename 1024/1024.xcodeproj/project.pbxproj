@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2883CF981BA2B18400C9984D /* NSString+ShuaiYi.m in Sources */ = {isa = PBXBuildFile; fileRef = 2883CF971BA2B18400C9984D /* NSString+ShuaiYi.m */; };
+		2883CF9B1BA2DC9B00C9984D /* SYGameCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2883CF9A1BA2DC9B00C9984D /* SYGameCellModel.m */; };
 		28C442711BA030E3004A5EA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C442701BA030E3004A5EA1 /* main.m */; };
 		28C442741BA030E3004A5EA1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C442731BA030E3004A5EA1 /* AppDelegate.m */; };
 		28C4427C1BA030E3004A5EA1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C4427B1BA030E3004A5EA1 /* Images.xcassets */; };
@@ -41,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2883CF961BA2B18400C9984D /* NSString+ShuaiYi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ShuaiYi.h"; sourceTree = "<group>"; };
+		2883CF971BA2B18400C9984D /* NSString+ShuaiYi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ShuaiYi.m"; sourceTree = "<group>"; };
+		2883CF991BA2DC9B00C9984D /* SYGameCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYGameCellModel.h; sourceTree = "<group>"; };
+		2883CF9A1BA2DC9B00C9984D /* SYGameCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYGameCellModel.m; sourceTree = "<group>"; };
 		28C4426B1BA030E3004A5EA1 /* 1024.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1024.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C4426F1BA030E3004A5EA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28C442701BA030E3004A5EA1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -180,6 +186,10 @@
 			children = (
 				28C442D41BA18383004A5EA1 /* UIColor+ShuaiYi.h */,
 				28C442D51BA18383004A5EA1 /* UIColor+ShuaiYi.m */,
+				2883CF961BA2B18400C9984D /* NSString+ShuaiYi.h */,
+				2883CF971BA2B18400C9984D /* NSString+ShuaiYi.m */,
+				2883CF991BA2DC9B00C9984D /* SYGameCellModel.h */,
+				2883CF9A1BA2DC9B00C9984D /* SYGameCellModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -374,6 +384,8 @@
 			files = (
 				28C442C31BA032D7004A5EA1 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				28C442C11BA032D7004A5EA1 /* MASViewConstraint.m in Sources */,
+				2883CF981BA2B18400C9984D /* NSString+ShuaiYi.m in Sources */,
+				2883CF9B1BA2DC9B00C9984D /* SYGameCellModel.m in Sources */,
 				28C442C81BA0333F004A5EA1 /* GameViewController.m in Sources */,
 				28C442BC1BA032D7004A5EA1 /* MASCompositeConstraint.m in Sources */,
 				28C442C21BA032D7004A5EA1 /* NSArray+MASAdditions.m in Sources */,
@@ -512,7 +524,7 @@
 				INFOPLIST_FILE = 1024/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "75992ea5-009d-4130-91b5-656d42da4512";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -524,7 +536,7 @@
 				INFOPLIST_FILE = 1024/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "75992ea5-009d-4130-91b5-656d42da4512";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

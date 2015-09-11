@@ -13,7 +13,7 @@
 #import "SYGameCell.h"
 
 /// 一行多少个
-const NSUInteger Count_gameCell = 6;
+const NSUInteger Count_gameCell = 6.0f;
 
 @interface SYGameView ()
 {
@@ -152,19 +152,20 @@ const NSUInteger Count_gameCell = 6;
         {
             //  向左滑
             for (int i = 0; i < Count_gameCell; i ++) {
-                for (int j = 1; j < Count_gameCell - 1; j ++) {
-                    int k = j;
+                for (int j = 0; j < Count_gameCell - 1; j ++) {
+                    /// 永远从 最右侧 向左推进
+                    int k = 0;
                     /// 左边为0  就交换
-                    while (k > 0 &&
-                           k < Count_gameCell &&
-                           ((SYGameCell *)_gameCellsCache[i][k-1]).number == 0 &&
-                           ((SYGameCell *)_gameCellsCache[i][k]).number != 0) {
-                        SYGameCell *rightCell = _gameCellsCache[i][k];
-                        SYGameCell *leftCell = _gameCellsCache[i][k-1];
-                        leftCell.number = rightCell.number;
-                        rightCell.number = 0;
+                    while (k < Count_gameCell-1) {
+                        SYGameCell *rightCell = _gameCellsCache[i][Count_gameCell - k - 1];
+                        SYGameCell *leftCell = _gameCellsCache[i][Count_gameCell - k - 2];
+                        if (rightCell.number != 0 &&
+                            leftCell.number == 0) {
+                            leftCell.number = rightCell.number;
+                            rightCell.number = 0;
+                            needAddNewCell = YES;
+                        }
                         k ++;
-                        needAddNewCell = YES;
                     }
                 }
             }
@@ -184,6 +185,25 @@ const NSUInteger Count_gameCell = 6;
                     }
                 }
             }
+            //  向左滑
+            for (int i = 0; i < Count_gameCell; i ++) {
+                for (int j = 0; j < Count_gameCell - 1; j ++) {
+                    /// 永远从 最右侧 向左推进
+                    int k = 0;
+                    /// 左边为0  就交换
+                    while (k < Count_gameCell-1) {
+                        SYGameCell *rightCell = _gameCellsCache[i][Count_gameCell - k - 1];
+                        SYGameCell *leftCell = _gameCellsCache[i][Count_gameCell - k - 2];
+                        if (rightCell.number != 0 &&
+                            leftCell.number == 0) {
+                            leftCell.number = rightCell.number;
+                            rightCell.number = 0;
+                            needAddNewCell = YES;
+                        }
+                        k ++;
+                    }
+                }
+            }
         }
             break;
         case UISwipeGestureRecognizerDirectionRight:
@@ -191,17 +211,19 @@ const NSUInteger Count_gameCell = 6;
             //  向右滑
             for (int i = 0; i < Count_gameCell; i ++) {
                 for (int j = Count_gameCell - 1; j >= 0; j --) {
+                    /// 永远都是 从最左边 向右推进
                     int k = j;
                     /// 左边为0  就交换
-                    while (k < Count_gameCell - 1 &&
-                           ((SYGameCell *)_gameCellsCache[i][k+1]).number == 0 &&
-                           ((SYGameCell *)_gameCellsCache[i][k]).number != 0) {
+                    while (k < Count_gameCell - 1) {
                         SYGameCell *rightCell = _gameCellsCache[i][k+1];
                         SYGameCell *leftCell = _gameCellsCache[i][k];
-                        rightCell.number = leftCell.number;
-                        leftCell.number = 0;
+                        if (rightCell.number == 0 &&
+                            leftCell.number != 0) {
+                            rightCell.number = leftCell.number;
+                            leftCell.number = 0;
+                            needAddNewCell = YES;
+                        }
                         k ++;
-                        needAddNewCell = YES;
                     }
                 }
             }
@@ -221,16 +243,135 @@ const NSUInteger Count_gameCell = 6;
                     }
                 }
             }
+            //  向右滑
+            for (int i = 0; i < Count_gameCell; i ++) {
+                for (int j = Count_gameCell - 1; j >= 0; j --) {
+                    /// 永远都是 从最左边 向右推进
+                    int k = j;
+                    /// 左边为0  就交换
+                    while (k < Count_gameCell - 1) {
+                        SYGameCell *rightCell = _gameCellsCache[i][k+1];
+                        SYGameCell *leftCell = _gameCellsCache[i][k];
+                        if (rightCell.number == 0 &&
+                            leftCell.number != 0) {
+                            rightCell.number = leftCell.number;
+                            leftCell.number = 0;
+                            needAddNewCell = YES;
+                        }
+                        k ++;
+                    }
+                }
+            }
         }
             break;
         case UISwipeGestureRecognizerDirectionUp:
         {
             //  向上滑
+            for (int i = 0; i < Count_gameCell; i ++) {
+                for (int j = Count_gameCell - 1; j >= 0; j --) {
+                    /// 永远都是 从最下 向上推进
+                    int k = j;
+                    //  上面为0 就交换
+                    while (k < Count_gameCell-1) {
+                        SYGameCell *downCell    = _gameCellsCache[Count_gameCell-k-1][i];
+                        SYGameCell *upCell      = _gameCellsCache[Count_gameCell-k-2][i];
+                        if (downCell.number != 0 &&
+                            upCell.number == 0) {
+                            upCell.number = downCell.number;
+                            downCell.number = 0;
+                            needAddNewCell = YES;
+                        }
+                        k++;
+                    }
+                }
+            }
+            //  合并
+            for (int i = 0; i < Count_gameCell; i ++) {
+                for (int j = 0; j <= Count_gameCell - 2; j ++) {
+                    SYGameCell *upCell = _gameCellsCache[j][i];
+                    SYGameCell *downCell = _gameCellsCache[j+1][i];
+                    if (upCell.number &&
+                        upCell.number == downCell.number) {
+                        downCell.number = 0;
+                        upCell.number ++;
+                        needAddNewCell = YES;
+                    }
+                }
+            }
+            //  向上滑
+            for (int i = 0; i < Count_gameCell; i ++) {
+                for (int j = Count_gameCell - 1; j >= 0; j --) {
+                    /// 永远都是 从最下 向上推进
+                    int k = j;
+                    //  上面为0 就交换
+                    while (k < Count_gameCell-1) {
+                        SYGameCell *downCell    = _gameCellsCache[Count_gameCell-k-1][i];
+                        SYGameCell *upCell      = _gameCellsCache[Count_gameCell-k-2][i];
+                        if (downCell.number != 0 &&
+                            upCell.number == 0) {
+                            upCell.number = downCell.number;
+                            downCell.number = 0;
+                            needAddNewCell = YES;
+                        }
+                        k++;
+                    }
+                }
+            }
         }
             break;
         case UISwipeGestureRecognizerDirectionDown:
         {
             //  向下滑
+            for (int i = 0; i < Count_gameCell; i ++) {
+                for (int j = 0; j < Count_gameCell - 1; j ++) {
+                    /// 永远都是 从最上 向下推进
+                    int k = 0;
+                    //  下面为0 就交换
+                    while (k < Count_gameCell - 1) {
+                        SYGameCell *upCell = _gameCellsCache[k][i];
+                        SYGameCell *downCell = _gameCellsCache[k+1][i];
+                        if (upCell.number != 0 &&
+                            downCell.number == 0) {
+                            downCell.number = upCell.number;
+                            upCell.number = 0;
+                            needAddNewCell = YES;
+                        }
+                        k ++;
+                    }
+                }
+            }
+            //  合并
+            for (int i = 0; i < Count_gameCell; i ++) {
+                for (int j = Count_gameCell - 2; j >= 0; j --) {
+                    SYGameCell *upCell = _gameCellsCache[j][i];
+                    SYGameCell *downCell = _gameCellsCache[j+1][i];
+                    if (upCell.number &&
+                        upCell.number == downCell.number) {
+                        downCell.number ++;
+                        upCell.number = 0;
+                        needAddNewCell = YES;
+                    }
+                }
+            }
+            //  向下滑
+            for (int i = 0; i < Count_gameCell; i ++) {
+                for (int j = 0; j < Count_gameCell - 1; j ++) {
+                    /// 永远都是 从最上 向下推进
+                    int k = 0;
+                    //  下面为0 就交换
+                    while (k < Count_gameCell - 1) {
+                        SYGameCell *upCell = _gameCellsCache[k][i];
+                        SYGameCell *downCell = _gameCellsCache[k+1][i];
+                        if (upCell.number != 0 &&
+                            downCell.number == 0) {
+                            downCell.number = upCell.number;
+                            upCell.number = 0;
+                            needAddNewCell = YES;
+                        }
+                        k ++;
+                    }
+                }
+            }
         }
             break;
             
@@ -258,12 +399,16 @@ const NSUInteger Count_gameCell = 6;
 /// 刷新页面
 - (void)_uploadGameView {
     
-    for (int i = 0; i < Count_gameCell; i ++) {
-        for (int j = 0; j < Count_gameCell; j ++) {
-            SYGameCell *cell = _gameCellsCache[i][j];
-            cell.frame = CGRectMake(j * _width_cell + 4, i * _width_cell + 4, _width_cell, _width_cell);
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        for (int i = 0; i < Count_gameCell; i ++) {
+            for (int j = 0; j < Count_gameCell; j ++) {
+                SYGameCell *cell = _gameCellsCache[i][j];
+                cell.frame = CGRectMake(j * _width_cell + 4, i * _width_cell + 4, _width_cell, _width_cell);
+            }
         }
-    }
+    }];
+   
 }
 
 @end
