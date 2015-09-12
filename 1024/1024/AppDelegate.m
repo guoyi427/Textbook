@@ -10,6 +10,9 @@
 
 #import "GameViewController.h"
 
+//  Model
+#import "SYGameCellModel.h"
+
 @interface AppDelegate ()
 
 @end
@@ -36,6 +39,11 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    //  缓存数据到本地
+    NSArray *gameCellLocationArray = [SYGameCellModel instance].historyCache;
+    
+    NSString *documentsFile = [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"gameCellIndex"];
+    [gameCellLocationArray writeToFile:documentsFile atomically:YES];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

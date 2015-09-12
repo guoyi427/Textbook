@@ -10,7 +10,10 @@
 
 @interface SYGameCellModel : NSObject
 
+/// 标题
 @property (nonatomic, strong) NSArray *titlesArray;
+/// 历史缓存
+@property (nonatomic, strong) NSMutableArray *historyCache;
 
 + (instancetype)instance;
 

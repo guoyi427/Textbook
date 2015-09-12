@@ -12,6 +12,9 @@
 #import "Masonry.h"
 #import "SYGameCell.h"
 
+//  Model
+#import "SYGameCellModel.h"
+
 /// 一行多少个
 const NSUInteger Count_gameCell = 6.0f;
 
@@ -24,8 +27,6 @@ const NSUInteger Count_gameCell = 6.0f;
     CGFloat _screenHeight;
     /// 所有游戏单元的缓存数组
     NSMutableArray *_gameCellsCache;
-    /// 所有步骤的缓存 每个元素为 number
-    NSMutableArray *_historyCache;
     /// 单元格宽
     CGFloat _width_cell;
     
@@ -69,8 +70,6 @@ const NSUInteger Count_gameCell = 6.0f;
     }
     //  单元格宽
     _width_cell = (_screenWidth - 8) / Count_gameCell;
-    //  初始化历史缓存
-    _historyCache = [NSMutableArray array];
     
     //  注册通知中心
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(undoButtonNotification:) name:@"kUndoGame" object:nil];
@@ -97,34 +96,49 @@ const NSUInteger Count_gameCell = 6.0f;
 
 /// 准备 游戏单元 6 * 6
 - (void)_prepareGameCells {
-
-    //  随机两个单元格位置
-    NSUInteger x_cell1 = arc4random()%Count_gameCell;
-    NSUInteger y_cell1 = arc4random()%Count_gameCell;
+    /// 判断是否有本地缓存
+    NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"gameCellIndex"];
+    NSArray *gameCellIndex = [NSArray arrayWithContentsOfFile:filePath];
     
-    NSUInteger x_cell2 = arc4random()%Count_gameCell;
-    NSUInteger y_cell2 = arc4random()%Count_gameCell;
-    
-    while (x_cell1 == x_cell2 &&
-           y_cell1 == y_cell2) {
-        //  不能重合 重新来
-        x_cell2 = arc4random()%Count_gameCell;
-        y_cell2 = arc4random()%Count_gameCell;
-    }
-    
-    /// 准备所有按钮
-    for (int i = 0; i < Count_gameCell; i ++) {
-        for (int j = 0; j < Count_gameCell; j ++) {
-            SYGameCell *cell = [SYGameCell gameCell];
-            cell.frame = CGRectMake(j * _width_cell + 4, i * _width_cell + 4, _width_cell, _width_cell);
-            if ((j == x_cell1 && i == y_cell1) ||
-                (j == x_cell2 && i == y_cell2)) {
-                cell.number = 1;
+    if (!gameCellIndex) {
+        //  本地存在缓存
+        //  随机两个单元格位置
+        NSUInteger x_cell1 = arc4random()%Count_gameCell;
+        NSUInteger y_cell1 = arc4random()%Count_gameCell;
+        
+        NSUInteger x_cell2 = arc4random()%Count_gameCell;
+        NSUInteger y_cell2 = arc4random()%Count_gameCell;
+        
+        while (x_cell1 == x_cell2 &&
+               y_cell1 == y_cell2) {
+            //  不能重合 重新来
+            x_cell2 = arc4random()%Count_gameCell;
+            y_cell2 = arc4random()%Count_gameCell;
+        }
+        
+        /// 准备所有按钮
+        for (int i = 0; i < Count_gameCell; i ++) {
+            for (int j = 0; j < Count_gameCell; j ++) {
+                SYGameCell *cell = [SYGameCell gameCell];
+                cell.frame = CGRectMake(j * _width_cell + 4, i * _width_cell + 4, _width_cell, _width_cell);
+                if ((j == x_cell1 && i == y_cell1) ||
+                    (j == x_cell2 && i == y_cell2)) {
+                    cell.number = 1;
+                }
+                [_centerView addSubview:cell];
+                //  加到缓存
+                NSMutableArray *sectionArray = _gameCellsCache[i];
+                [sectionArray addObject:cell];
             }
-            [_centerView addSubview:cell];
-            //  加到缓存
-            NSMutableArray *sectionArray = _gameCellsCache[i];
-            [sectionArray addObject:cell];
+        }
+
+    } else {
+        //  本地不存在缓存
+        for (int i = 0; i < gameCellIndex.count; i ++) {
+            NSArray *sectionArray = gameCellIndex[i];
+            for (int j = 0; j < sectionArray.count; j ++) {
+                NSLog(@"%@",sectionArray[j]);
+            }
         }
     }
 
@@ -138,7 +152,7 @@ const NSUInteger Count_gameCell = 6.0f;
         }
         [numberArray addObject:sectionArray];
     }
-    [_historyCache addObject:numberArray];
+    [[SYGameCellModel instance].historyCache addObject:numberArray];
 }
 
 /// 准备骚动手势
@@ -177,7 +191,7 @@ const NSUInteger Count_gameCell = 6.0f;
         }
         [numberArray addObject:sectionArray];
     }
-    [_historyCache addObject:numberArray];
+    [[SYGameCellModel instance].historyCache addObject:numberArray];
     
     /// 记录是否需要 添加新的单元
     BOOL needAddNewCell = NO;
@@ -434,8 +448,8 @@ const NSUInteger Count_gameCell = 6.0f;
     NSString *type = notification.object;
     NSLog(@"type = %@",type);
 
-    if (_historyCache.count > 1) {
-        NSMutableArray *numberArray = _historyCache[_historyCache.count - 2];
+    if ([SYGameCellModel instance].historyCache.count > 1) {
+        NSMutableArray *numberArray = [SYGameCellModel instance].historyCache[[SYGameCellModel instance].historyCache.count - 2];
         
         for (int i = 0; i < Count_gameCell; i ++) {
             for (int j = 0; j < Count_gameCell; j ++) {
@@ -443,7 +457,7 @@ const NSUInteger Count_gameCell = 6.0f;
                 cell.number = [numberArray[i][j] unsignedIntegerValue];
             }
         }
-        [_historyCache removeLastObject];
+        [[SYGameCellModel instance].historyCache removeLastObject];
     }
 }
 
