@@ -13,6 +13,9 @@
 #import "SYGameView.h"
 #import "Masonry.h"
 
+//  Model
+#import "SYGameCellModel.h"
+
 const CGFloat Height_GameTapToolBar = 100.0f;
 
 @interface GameViewController ()
@@ -38,6 +41,16 @@ const CGFloat Height_GameTapToolBar = 100.0f;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //  获取本地分数
+    NSNumber *scoreNumber = [NSDictionary dictionaryWithContentsOfFile:[SYGameCellModel instance].cacheFilePath][k_Socre];
+    if ([scoreNumber unsignedIntegerValue]) {
+        _gameTapToolBar.scoreLabel.text = [NSString stringWithFormat:@"%@",scoreNumber];
+    }
+
 }
 
 #pragma mark - Prepare

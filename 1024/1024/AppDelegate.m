@@ -32,30 +32,34 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     //  缓存数据到本地
-    NSArray *gameCellLocationArray = [SYGameCellModel instance].historyCache;
+    NSArray *gameCellLocationArray = [SYGameCellModel instance].historyCache.lastObject;
     
-    NSString *documentsFile = [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"gameCellIndex"];
-    [gameCellLocationArray writeToFile:documentsFile atomically:YES];
+    //  保存当前总分到本地
+    NSDictionary *cacheDic = [NSDictionary dictionaryWithObjectsAndKeys:
+                              gameCellLocationArray,k_Numbers,
+                              [NSNumber numberWithUnsignedInteger:[SYGameCellModel instance].score],k_Socre, nil];
+
+    
+    //  写入本地
+    [cacheDic writeToFile:[SYGameCellModel instance].cacheFilePath atomically:YES];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+   
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    //  更新分数
+    [SYGameCellModel instance].score = [[NSDictionary dictionaryWithContentsOfFile:[SYGameCellModel instance].cacheFilePath][k_Socre] unsignedIntegerValue];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
 }
 
 @end

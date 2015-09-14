@@ -10,6 +10,9 @@
 
 @interface SYGameTapToolBar : UIView
 
+/// 分数标签
+@property (nonatomic, strong) UILabel *scoreLabel;
+
 /// 便利构造器
 + (instancetype)gameTapToolBar;
 
