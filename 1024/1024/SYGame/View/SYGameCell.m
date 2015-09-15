@@ -82,6 +82,7 @@
     _titleLabel.textColor = [UIColor whiteColor];
     _titleLabel.font = [UIFont systemFontOfSize:40];
     _titleLabel.adjustsFontSizeToFitWidth = YES;
+
     [backgroundView addSubview:_titleLabel];
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(_discolorView);

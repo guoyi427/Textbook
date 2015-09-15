@@ -524,6 +524,19 @@
 }
 
 - (void)gameSizeAlertView:(SYGameSizeAlertView *)alertView didSelectedType:(NSInteger)type {
+    
+    //  缓存数据到本地
+    NSArray *gameCellLocationArray = [SYGameCellModel instance].historyCache.lastObject;
+    
+    //  保存当前总分到本地
+    NSDictionary *cacheDic = [NSDictionary dictionaryWithObjectsAndKeys:
+                              gameCellLocationArray,k_Numbers,
+                              [NSNumber numberWithUnsignedInteger:[SYGameCellModel instance].score],k_Socre, nil];
+    
+    
+    //  写入本地
+    [cacheDic writeToFile:[SYGameCellModel instance].cacheFilePath atomically:YES];
+    
     //  保存到缓存
     [SYGameCellModel instance].count_gameCell = (int)type;
     

@@ -58,6 +58,9 @@
     [SYGameCellModel instance].score = [[NSDictionary dictionaryWithContentsOfFile:[SYGameCellModel instance].cacheFilePath][k_Socre] unsignedIntegerValue];
     //  更新规格
     [SYGameCellModel instance].count_gameCell = [[NSDictionary dictionaryWithContentsOfFile:[SYGameCellModel instance].cacheFilePath][k_Size] intValue];
+    if (![SYGameCellModel instance].count_gameCell) {
+        [SYGameCellModel instance].count_gameCell = 4;
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
