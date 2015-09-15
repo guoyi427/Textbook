@@ -30,7 +30,8 @@
                              @"黑洞",@"白洞",@"宇宙",@"帅毅",@"傻金",@"老郭",
                              @"淑华",@"小娥",@"你真棒！",@"你真酷！",@"了不起！",@"无限大！"];
         self.historyCache = [NSMutableArray array];
-        self.count_gameCell = 5;
+        
+        self.count_gameCell = 4;
     }
     return self;
 }
@@ -42,6 +43,16 @@
     /// 更新文件路径
     NSString *documentsFile = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:[NSString stringWithFormat:@"gameCellIndex%d.plist",count_gameCell]];
     _cacheFilePath = documentsFile;
+    //  保存 规格到本地
+    NSDictionary *dic_file = [NSDictionary dictionaryWithContentsOfFile:documentsFile];
+    NSMutableDictionary *m_dic = nil;
+    if (dic_file) {
+        m_dic = [NSMutableDictionary dictionaryWithDictionary:dic_file];
+    } else {
+        m_dic = [NSMutableDictionary dictionary];
+    }
+    [m_dic setObject:k_Size forKey:[NSNumber numberWithInt:count_gameCell]];
+    [m_dic writeToFile:documentsFile atomically:YES];
 }
 
 @end

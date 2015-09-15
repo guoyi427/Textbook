@@ -80,11 +80,12 @@
     //  标签
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.textColor = [UIColor whiteColor];
-    _titleLabel.font = [UIFont systemFontOfSize:20];
+    _titleLabel.font = [UIFont systemFontOfSize:40];
     _titleLabel.adjustsFontSizeToFitWidth = YES;
     [backgroundView addSubview:_titleLabel];
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(backgroundView);
+        make.center.equalTo(_discolorView);
+        make.width.equalTo(_discolorView).offset(-10);
     }];
 }
 
@@ -95,6 +96,7 @@
         _number = number;
         /// 更新 cell 背景颜色
         _discolorView.backgroundColor = [UIColor colorWithNumber:number];
+        _titleLabel.textColor = [UIColor inverseColorWithNumber:number];
         _titleLabel.text = [NSString stringWithNumber:number];
     }
 }

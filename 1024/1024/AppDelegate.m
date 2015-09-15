@@ -56,6 +56,8 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     //  更新分数
     [SYGameCellModel instance].score = [[NSDictionary dictionaryWithContentsOfFile:[SYGameCellModel instance].cacheFilePath][k_Socre] unsignedIntegerValue];
+    //  更新规格
+    [SYGameCellModel instance].count_gameCell = [[NSDictionary dictionaryWithContentsOfFile:[SYGameCellModel instance].cacheFilePath][k_Size] intValue];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

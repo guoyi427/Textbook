@@ -12,9 +12,9 @@
 @protocol SYGameSizeAlertViewDelegate <NSObject>
 
 /// 点击结束
-- (void)gameSizeAlertView:(SYGameSizeAlertView *)alertView didSelectedType:(int)type;
+- (void)gameSizeAlertView:(SYGameSizeAlertView *)alertView didSelectedType:(NSInteger)type;
 /// 界面隐藏代理
-- (void)gameSizeAlertView:(SYGameSizeAlertView *)alertView didDisappear:(int)animation;
+- (void)gameSizeAlertView:(SYGameSizeAlertView *)alertView didDisappear:(NSInteger)animation;
 
 @end
 

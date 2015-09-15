@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 
 /// 单元格缓存 key
-static NSString *k_Numbers = @"number";
+static NSString *k_Numbers  = @"number";
 /// 总分缓存 key
-static NSString *k_Socre = @"socre";
+static NSString *k_Socre    = @"socre";
+/// 规格
+static NSString *k_Size     = @"size";
 
 @interface SYGameCellModel : NSObject
 

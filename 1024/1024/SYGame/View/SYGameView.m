@@ -519,15 +519,28 @@
 
 #pragma mark - GameSizeAlertView - Delegate
 
-- (void)gameSizeAlertView:(SYGameSizeAlertView *)alertView didDisappear:(int)animation {
+- (void)gameSizeAlertView:(SYGameSizeAlertView *)alertView didDisappear:(NSInteger)animation {
     _alertView = nil;
 }
 
-- (void)gameSizeAlertView:(SYGameSizeAlertView *)alertView didSelectedType:(int)type {
+- (void)gameSizeAlertView:(SYGameSizeAlertView *)alertView didSelectedType:(NSInteger)type {
     //  保存到缓存
-    [SYGameCellModel instance].count_gameCell = type;
-    //  保存到本地
+    [SYGameCellModel instance].count_gameCell = (int)type;
     
+    //  刷新页面
+    for (UIView *deleteView in _centerView.subviews) {
+        [deleteView removeFromSuperview];
+    }
+    [_gameCellsCache removeAllObjects];
+    _gameCellsCache = nil;
+    _gameCellsCache = [NSMutableArray arrayWithCapacity:[SYGameCellModel instance].count_gameCell];
+    for (int i = 0; i < [SYGameCellModel instance].count_gameCell; i ++) {
+        NSMutableArray *sectionArray = [NSMutableArray arrayWithCapacity:[SYGameCellModel instance].count_gameCell];
+        [_gameCellsCache addObject:sectionArray];
+    }
+    //  更新宽度m
+    _width_cell = (_screenWidth - 8) / [SYGameCellModel instance].count_gameCell;
+    [self _prepareGameCells];
 }
 
 @end

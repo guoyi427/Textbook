@@ -86,6 +86,8 @@ static NSInteger Tag_typeButton = 100;
         [_delegate respondsToSelector:@selector(gameSizeAlertView:didSelectedType:)]) {
         [_delegate gameSizeAlertView:self didSelectedType:type];
     }
+    //  隐藏
+    [self hidden];
 }
 
 #pragma mark - Public Methods
