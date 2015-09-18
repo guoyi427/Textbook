@@ -12,6 +12,7 @@
 
 //  Model
 #import "SYGameCellModel.h"
+#import "MobClick.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +23,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    /// 友盟统计
+    [MobClick startWithAppkey:@"55f8fe4de0f55a0ca400480c" reportPolicy:0 channelId:nil];
+    
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
 
     GameViewController *viewController = [[GameViewController alloc] init];
@@ -42,7 +46,8 @@
     //  保存当前总分到本地
     NSDictionary *cacheDic = [NSDictionary dictionaryWithObjectsAndKeys:
                               gameCellLocationArray,k_Numbers,
-                              [NSNumber numberWithUnsignedInteger:[SYGameCellModel instance].score],k_Socre, nil];
+                              [NSNumber numberWithUnsignedInteger:[SYGameCellModel instance].score],k_Socre,
+                              [NSNumber numberWithInt:[SYGameCellModel instance].count_gameCell],k_Size, nil];
 
     
     //  写入本地

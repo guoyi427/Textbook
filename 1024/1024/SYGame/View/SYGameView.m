@@ -16,6 +16,9 @@
 //  Model
 #import "SYGameCellModel.h"
 
+/// 单元格间隔
+static CGFloat Cell_padding = 4.0f;
+
 @interface SYGameView () <SYGameSizeAlertViewDelegate>
 {
     //  Data
@@ -26,7 +29,7 @@
     /// 所有游戏单元的缓存数组
     NSMutableArray *_gameCellsCache;
     /// 单元格宽
-    CGFloat _width_cell;
+    int _width_cell;
     
     //  UI
     /// 中间视图
@@ -69,7 +72,7 @@
         [_gameCellsCache addObject:sectionArray];
     }
     //  单元格宽
-    _width_cell = (_screenWidth - 8) / [SYGameCellModel instance].count_gameCell;
+    _width_cell = (_screenWidth - ([SYGameCellModel instance].count_gameCell + 1) * Cell_padding) / [SYGameCellModel instance].count_gameCell;
     
     //  注册通知中心
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(undoButtonNotification:) name:@"kUndoGame" object:nil];
@@ -118,6 +121,9 @@
     NSDictionary *cacheDic = [NSDictionary dictionaryWithContentsOfFile:[SYGameCellModel instance].cacheFilePath];
     NSArray *gameCellIndex = cacheDic[k_Numbers];
     
+    /// 单元格 左上角起点
+    CGFloat originOffset = (_screenWidth - ((_width_cell + Cell_padding) * [SYGameCellModel instance].count_gameCell - Cell_padding)) / 2.0f;
+    
     if (gameCellIndex) {
         //  本地存在缓存
         //  本地不存在缓存
@@ -132,7 +138,10 @@
         for (int i = 0; i < [SYGameCellModel instance].count_gameCell; i ++) {
             for (int j = 0; j < [SYGameCellModel instance].count_gameCell; j ++) {
                 SYGameCell *cell = [SYGameCell gameCell];
-                cell.frame = CGRectMake(j * _width_cell + 4, i * _width_cell + 4, _width_cell, _width_cell);
+                cell.frame = CGRectMake(j * (_width_cell + Cell_padding) + originOffset,
+                                        i * (_width_cell + Cell_padding) + originOffset,
+                                        _width_cell,
+                                        _width_cell);
                 //  对比 number
                 NSNumber *number = gameCellIndex[i][j];
                 cell.number = [number unsignedIntegerValue];
@@ -165,11 +174,15 @@
         for (int i = 0; i < [SYGameCellModel instance].count_gameCell; i ++) {
             for (int j = 0; j < [SYGameCellModel instance].count_gameCell; j ++) {
                 SYGameCell *cell = [SYGameCell gameCell];
-                cell.frame = CGRectMake(j * _width_cell + 4, i * _width_cell + 4, _width_cell, _width_cell);
+                cell.frame = CGRectMake(j * (_width_cell + Cell_padding) + originOffset,
+                                        i * (_width_cell + Cell_padding) + originOffset,
+                                        _width_cell,
+                                        _width_cell);
                 if ((j == x_cell1 && i == y_cell1) ||
                     (j == x_cell2 && i == y_cell2)) {
                     cell.number = 1;
                 }
+//                cell.number = i * j;
                 [_centerView addSubview:cell];
                 //  加到缓存
                 NSMutableArray *sectionArray = _gameCellsCache[i];
@@ -524,7 +537,7 @@
 }
 
 - (void)gameSizeAlertView:(SYGameSizeAlertView *)alertView didSelectedType:(NSInteger)type {
-    
+
     //  缓存数据到本地
     NSArray *gameCellLocationArray = [SYGameCellModel instance].historyCache.lastObject;
     
@@ -540,6 +553,10 @@
     //  保存到缓存
     [SYGameCellModel instance].count_gameCell = (int)type;
     
+    
+    //  删除缓存
+    [[SYGameCellModel instance].historyCache removeAllObjects];
+    
     //  刷新页面
     for (UIView *deleteView in _centerView.subviews) {
         [deleteView removeFromSuperview];
@@ -552,7 +569,7 @@
         [_gameCellsCache addObject:sectionArray];
     }
     //  更新宽度m
-    _width_cell = (_screenWidth - 8) / [SYGameCellModel instance].count_gameCell;
+    _width_cell = (_screenWidth - ([SYGameCellModel instance].count_gameCell + 1) * Cell_padding) / [SYGameCellModel instance].count_gameCell;
     [self _prepareGameCells];
 }
 

@@ -16,7 +16,14 @@
 
 /// 根据number返回对应的文字
 + (NSString *)stringWithNumber:(NSUInteger)number {
-    NSString *resultString = [SYGameCellModel instance].titlesArray[number];
+    NSString *resultString = nil;
+    
+    if ([SYGameCellModel instance].titlesArray.count > number) {
+        resultString = [SYGameCellModel instance].titlesArray[number];
+    } else {
+        resultString = @"";
+    }
+    
     return resultString;
 }
 

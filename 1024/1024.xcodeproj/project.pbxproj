@@ -31,6 +31,8 @@
 		28C442CE1BA0346C004A5EA1 /* SYGameTapToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C442CD1BA0346C004A5EA1 /* SYGameTapToolBar.m */; };
 		28C442D31BA03AAF004A5EA1 /* SYGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C442D21BA03AAF004A5EA1 /* SYGameCell.m */; };
 		28C442D61BA18383004A5EA1 /* UIColor+ShuaiYi.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C442D51BA18383004A5EA1 /* UIColor+ShuaiYi.m */; };
+		28EBC8981BA9405300429BEE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EBC8971BA9405300429BEE /* libz.dylib */; };
+		28EBC8AE1BA966AC00429BEE /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EBC8AB1BA966AC00429BEE /* libMobClickLibrary.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,10 @@
 		28C442D21BA03AAF004A5EA1 /* SYGameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYGameCell.m; sourceTree = "<group>"; };
 		28C442D41BA18383004A5EA1 /* UIColor+ShuaiYi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ShuaiYi.h"; sourceTree = "<group>"; };
 		28C442D51BA18383004A5EA1 /* UIColor+ShuaiYi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ShuaiYi.m"; sourceTree = "<group>"; };
+		28EBC8971BA9405300429BEE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		28EBC8AB1BA966AC00429BEE /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		28EBC8AC1BA966AC00429BEE /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		28EBC8AD1BA966AC00429BEE /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28EBC8981BA9405300429BEE /* libz.dylib in Frameworks */,
+				28EBC8AE1BA966AC00429BEE /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +127,7 @@
 		28C442621BA030E3004A5EA1 = {
 			isa = PBXGroup;
 			children = (
+				28EBC8971BA9405300429BEE /* libz.dylib */,
 				28C4426D1BA030E3004A5EA1 /* 1024 */,
 				28C442871BA030E3004A5EA1 /* 1024Tests */,
 				28C4426C1BA030E3004A5EA1 /* Products */,
@@ -234,6 +243,7 @@
 		28C4429D1BA031E7004A5EA1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				28EBC8AA1BA966AC00429BEE /* UMAnalytics_SDK */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +296,16 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
+		28EBC8AA1BA966AC00429BEE /* UMAnalytics_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				28EBC8AB1BA966AC00429BEE /* libMobClickLibrary.a */,
+				28EBC8AC1BA966AC00429BEE /* MobClick.h */,
+				28EBC8AD1BA966AC00429BEE /* MobClickSocialAnalytics.h */,
+			);
+			path = UMAnalytics_SDK;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -335,7 +355,7 @@
 				TargetAttributes = {
 					28C4426A1BA030E3004A5EA1 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 3X2765234N;
+						DevelopmentTeam = 658F9LHEEU;
 					};
 					28C442831BA030E3004A5EA1 = {
 						CreatedOnToolsVersion = 6.4;
@@ -525,30 +545,49 @@
 		28C4428F1BA030E3004A5EA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: BUS-ONLINE (TECHNOLOGY) CO., LTD";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BUS-ONLINE (TECHNOLOGY) CO., LTD";
 				INFOPLIST_FILE = 1024/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/1024/SYThirdparty/Model/UMAnalytics_Sdk_3.5.15",
+					"$(PROJECT_DIR)/1024/SYThirdparty/Model/UMAnalytics_Sdk_3.5.14",
+					"$(PROJECT_DIR)/1024/SYThirdparty/Model/UMAnalytics_SDK",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = 1024;
 				PROVISIONING_PROFILE = "980071a7-7987-49e9-b7a9-801e47b9ac7d";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
 		28C442901BA030E3004A5EA1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: BUS-ONLINE (TECHNOLOGY) CO., LTD";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BUS-ONLINE (TECHNOLOGY) CO., LTD";
 				INFOPLIST_FILE = 1024/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/1024/SYThirdparty/Model/UMAnalytics_Sdk_3.5.15",
+					"$(PROJECT_DIR)/1024/SYThirdparty/Model/UMAnalytics_Sdk_3.5.14",
+					"$(PROJECT_DIR)/1024/SYThirdparty/Model/UMAnalytics_SDK",
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = 1024;
 				PROVISIONING_PROFILE = "980071a7-7987-49e9-b7a9-801e47b9ac7d";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

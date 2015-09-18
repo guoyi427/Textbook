@@ -50,7 +50,7 @@ static NSInteger Tag_typeButton = 100;
     [self addSubview:centerView];
     [centerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(weakSelf);
-        make.size.mas_equalTo(CGSizeMake(200, 200));
+        make.size.mas_equalTo(CGSizeMake(200, 230));
     }];
     
     /// 上一个按钮
@@ -67,10 +67,12 @@ static NSInteger Tag_typeButton = 100;
         [typeButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(weakSelf);
             if (weakLastButton) {
-                make.top.equalTo(weakLastButton.mas_bottom).offset(15);
+                make.top.equalTo(weakLastButton.mas_bottom).offset(5);
             } else {
-                make.top.equalTo(centerView).offset(15);
+                make.top.equalTo(centerView).offset(5);
             }
+            make.width.equalTo(centerView);
+            make.height.mas_equalTo(40);
         }];
         weakLastButton = typeButton;
     }

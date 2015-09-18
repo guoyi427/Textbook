@@ -8,11 +8,27 @@
 
 #import "UIColor+ShuaiYi.h"
 
-@implementation UIColor (ShuaiYi)
+//  Model
+#import "SYGameCellModel.h"
+
+@implementation UIColor(ShuaiYi)
 
 /// 根据number 返回对应背景颜色
 + (UIColor *)colorWithNumber:(NSUInteger)number {
-    UIColor *color = [UIColor colorWithRed:1 - number / 2.0f green:1 - number / 30.0f blue:1 - number / 7.0f alpha:1];
+    /// count
+    float count = [SYGameCellModel instance].count_gameCell * [SYGameCellModel instance].count_gameCell;
+    
+    /// 颜色最大值
+    float maxColorValue = 200.0f;
+    
+    float r,g,b;
+    r = number < (2.0f / 5.0f * count) ? number / 30.0f * maxColorValue / 255.0f : maxColorValue / 255.0f;
+    
+    //  无色 为 黑色
+    UIColor *color = [UIColor colorWithRed:0
+                                     green:0
+                                      blue:0
+                                     alpha:1];
     return color;
 }
 
