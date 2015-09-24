@@ -8,8 +8,6 @@
 
 #import "SYGameView.h"
 
-#import <CoreMotion/CoreMotion.h>
-
 #import "SYBulletView.h"
 
 @interface SYGameView ()
@@ -21,8 +19,9 @@
     CGPoint _paddingPoint;
     /// 是否需要发射子弹
     BOOL _needShoot;
-    CMMotionManager *_motionManager;
     NSTimer *_updateTimer;
+    /// 缓存所有飞行盒子
+    NSMutableArray *_boxCache;
 }
 
 @end
@@ -44,16 +43,15 @@ static CGFloat Radius_Oval = 20.0f;
 #pragma mark - Prepare
 
 - (void)_prepareData {
+    _boxCache = [NSMutableArray arrayWithCapacity:10];
     _screenSize = [UIScreen mainScreen].bounds.size;
     _obliqueLength = sqrtf(2) / 2.0f * Radius_Oval;
     _paddingPoint = CGPointZero;
     _offsetPoint = CGPointMake(_screenSize.width/2.0f, _screenSize.height/2.0f);
     _needShoot = NO;
-    /// 加速计
-    _motionManager = [[CMMotionManager alloc] init];
-    [_motionManager startMagnetometerUpdates];
+
     /// 计时器
-    _updateTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
+    _updateTimer = [NSTimer scheduledTimerWithTimeInterval:0.05
                                                     target:self
                                                   selector:@selector(_updateTimerAction)
                                                   userInfo:nil
@@ -62,16 +60,28 @@ static CGFloat Radius_Oval = 20.0f;
 }
 
 - (void)_prepareUI {
-    
+    UIView *box = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 50, 50)];
+    box.backgroundColor = [UIColor magentaColor];
+    [self addSubview:box];
+    [_boxCache addObject:box];
 }
 
 #pragma mark - Private Methods
 
 - (void)_updateTimerAction {
-    NSLog(@"%.1f , %.1f , %.1f",
-          _motionManager.magnetometerData.magneticField.x,
-          _motionManager.magnetometerData.magneticField.y,
-          _motionManager.magnetometerData.magneticField.z);
+     //  发射子弹
+    if (_needShoot) {
+        SYBulletView *bullet = [SYBulletView bulletViewWithCenter:_offsetPoint];
+        [self addSubview:bullet];
+    }
+    
+    //  浮动盒子
+    for (UIView *box in _boxCache) {
+        CGRect newRect = box.frame;
+        newRect.origin.x += ;
+        newRect.origin.y += ;
+        box.frame = newRect;
+    }
 }
 
 // Only override drawRect: if you perform custom drawing.
@@ -194,18 +204,10 @@ static CGFloat Radius_Oval = 20.0f;
     CGPoint point = [touche locationInView:self];
     
     [self updateViewWithOffset:CGPointMake(point.x + _paddingPoint.x, point.y + _paddingPoint.y)];
-    _needShoot = NO;
-    SYBulletView *bullet = [SYBulletView bulletViewWithCenter:_offsetPoint];
-    [self addSubview:bullet];
-
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    //  射击
-    if (_needShoot) {
-        SYBulletView *bullet = [SYBulletView bulletViewWithCenter:_offsetPoint];
-        [self addSubview:bullet];
-    }
+    _needShoot = NO;
 }
 
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

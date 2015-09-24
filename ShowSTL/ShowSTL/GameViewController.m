@@ -241,7 +241,7 @@ static const GLfloat StlScale = 1.0f;
 {
     [EAGLContext setCurrentContext:self.context];
     
-//    [self loadShaders];
+    [self loadShaders];
     
     self.effect = [[GLKBaseEffect alloc] init];
     self.effect.light0.enabled = GL_TRUE;
@@ -289,17 +289,19 @@ static const GLfloat StlScale = 1.0f;
     
     self.effect.transform.projectionMatrix = projectionMatrix;
     
+    //  旋转
     GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -4.0f);
     baseModelViewMatrix = GLKMatrix4Rotate(baseModelViewMatrix, _rotation, 0.0f, 1.0f, 0.0f);
     
     // Compute the model view matrix for the object rendered with GLKit
     GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -1.5f);
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, _rotation, 1.0f, 1.0f, 1.0f);
+    //  组合两种旋转  应该是在 上一次旋转的前提下 继续旋转   baseModelViewMatrix 记录了上一次的旋转角度
     modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix);
     
     self.effect.transform.modelviewMatrix = modelViewMatrix;
     
-    // Compute the model view matrix for the object rendered with ES2
+    // Compute the model view matrix for the object rendered with ES2       OpenGLES2 使用 GLKMatrix3 做动画
     modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, 1.5f);
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, _rotation, 1.0f, 1.0f, 1.0f);
     modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix);

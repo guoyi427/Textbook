@@ -31,7 +31,6 @@
 		28C442CE1BA0346C004A5EA1 /* SYGameTapToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C442CD1BA0346C004A5EA1 /* SYGameTapToolBar.m */; };
 		28C442D31BA03AAF004A5EA1 /* SYGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C442D21BA03AAF004A5EA1 /* SYGameCell.m */; };
 		28C442D61BA18383004A5EA1 /* UIColor+ShuaiYi.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C442D51BA18383004A5EA1 /* UIColor+ShuaiYi.m */; };
-		28EBC8981BA9405300429BEE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EBC8971BA9405300429BEE /* libz.dylib */; };
 		28EBC8AE1BA966AC00429BEE /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EBC8AB1BA966AC00429BEE /* libMobClickLibrary.a */; };
 /* End PBXBuildFile section */
 
@@ -98,7 +97,6 @@
 		28C442D21BA03AAF004A5EA1 /* SYGameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYGameCell.m; sourceTree = "<group>"; };
 		28C442D41BA18383004A5EA1 /* UIColor+ShuaiYi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ShuaiYi.h"; sourceTree = "<group>"; };
 		28C442D51BA18383004A5EA1 /* UIColor+ShuaiYi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ShuaiYi.m"; sourceTree = "<group>"; };
-		28EBC8971BA9405300429BEE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		28EBC8AB1BA966AC00429BEE /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		28EBC8AC1BA966AC00429BEE /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		28EBC8AD1BA966AC00429BEE /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28EBC8981BA9405300429BEE /* libz.dylib in Frameworks */,
 				28EBC8AE1BA966AC00429BEE /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,7 +124,6 @@
 		28C442621BA030E3004A5EA1 = {
 			isa = PBXGroup;
 			children = (
-				28EBC8971BA9405300429BEE /* libz.dylib */,
 				28C4426D1BA030E3004A5EA1 /* 1024 */,
 				28C442871BA030E3004A5EA1 /* 1024Tests */,
 				28C4426C1BA030E3004A5EA1 /* Products */,

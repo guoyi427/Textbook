@@ -20,7 +20,8 @@
                           delay:0.0f
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                         bullect.transform = CGAffineTransformMakeScale(2.0, 2.0f);
+                         bullect.transform = CGAffineTransformMakeScale(3.0, 3.0f);
+                         bullect.alpha = 0.1;
                      }
                      completion:^(BOOL finished) {
                          [bullect removeBullet];

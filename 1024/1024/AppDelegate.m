@@ -12,7 +12,7 @@
 
 //  Model
 #import "SYGameCellModel.h"
-#import "MobClick.h"
+//#import "MobClick.h"
 
 @interface AppDelegate ()
 
@@ -24,7 +24,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     /// 友盟统计
-    [MobClick startWithAppkey:@"55f8fe4de0f55a0ca400480c" reportPolicy:0 channelId:nil];
+//    [MobClick startWithAppkey:@"55f8fe4de0f55a0ca400480c" reportPolicy:0 channelId:nil];
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
 
