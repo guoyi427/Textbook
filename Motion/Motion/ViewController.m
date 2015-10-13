@@ -31,6 +31,10 @@
     SYPlotView *_plotView_accelerometer;
     /// 统计图 空间方位
     SYPlotView *_plotView_motion_attitude;
+    /// 统计图 旋转角
+    SYPlotView *_plotView_motion_rotationRate;
+    /// 统计图 重力角度
+    SYPlotView *_plotView_motion_gravity;
 }
 @end
 
@@ -71,7 +75,12 @@
     
     _plotView_motion_attitude = [[SYPlotView alloc] initWithFrame:CGRectMake(0, 130, _screenSize.width, 100)];
     [self.view addSubview:_plotView_motion_attitude];
-
+    
+    _plotView_motion_rotationRate = [[SYPlotView alloc] initWithFrame:CGRectMake(0, 240, _screenSize.width, 100)];
+    [self.view addSubview:_plotView_motion_rotationRate];
+    
+    _plotView_motion_gravity = [[SYPlotView alloc] initWithFrame:CGRectMake(0, 350, _screenSize.width, 100)];
+    [self.view addSubview:_plotView_motion_gravity];
 }
 
 #pragma mark - Private Methods
@@ -84,6 +93,19 @@
     [_plotView_motion_attitude addNumber1:[NSNumber numberWithFloat:_motionManager.deviceMotion.attitude.roll]
                                   number2:[NSNumber numberWithFloat:_motionManager.deviceMotion.attitude.pitch]
                                   number3:[NSNumber numberWithFloat:_motionManager.deviceMotion.attitude.yaw]];
+    
+    [_plotView_motion_rotationRate addNumber1:[NSNumber numberWithFloat:_motionManager.deviceMotion.rotationRate.x]
+                                      number2:[NSNumber numberWithFloat:_motionManager.deviceMotion.rotationRate.y]
+                                      number3:[NSNumber numberWithFloat:_motionManager.deviceMotion.rotationRate.z]];
+    
+    [_plotView_motion_gravity addNumber1:[NSNumber numberWithFloat:_motionManager.deviceMotion.gravity.x]
+                                 number2:[NSNumber numberWithFloat:_motionManager.deviceMotion.gravity.y]
+                                 number3:[NSNumber numberWithFloat:_motionManager.deviceMotion.gravity.z]];
+    NSLog(@"x = %f y = %f z = %f",
+          _motionManager.deviceMotion.gravity.x,
+          _motionManager.deviceMotion.gravity.y,
+          _motionManager.deviceMotion.gravity.z);
+    
 }
 
 @end
