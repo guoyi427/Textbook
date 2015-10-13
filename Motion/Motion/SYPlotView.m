@@ -51,14 +51,6 @@ static CGFloat Scale_Y = 20;
 
 - (void)drawRect:(CGRect)rect {
     
-    /// 最上面的分界线
-    UIBezierPath *topBezierPath = [UIBezierPath bezierPath];
-    [topBezierPath moveToPoint:CGPointMake(0, 0)];
-    [topBezierPath addLineToPoint:CGPointMake(CGRectGetWidth(self.frame), 0)];
-    [[UIColor grayColor] setStroke];
-    topBezierPath.lineWidth = 0.5f;
-    [topBezierPath stroke];
-    
     if (_numberList1.count) {
         [self _drawBezierPathWithPointList:_numberList1 andLineColor:[UIColor redColor]];
     }
@@ -76,14 +68,18 @@ static CGFloat Scale_Y = 20;
 - (void)_drawBezierPathWithPointList:(NSArray *)pointList andLineColor:(UIColor *)lineColor {
     /// 以第一个点为起点开始画
     UIBezierPath *bezierPath = [UIBezierPath bezierPath];
-    [bezierPath moveToPoint:CGPointMake(Origin_X, Origin_Y + [pointList.firstObject floatValue] * Scale_Y)];
+    [bezierPath moveToPoint:CGPointMake(Origin_X, Origin_Y - [pointList.firstObject floatValue] * Scale_Y)];
     
     //  画所有的点
     NSUInteger count = pointList.count;
     for (unsigned int i = 1; i < count - 1; i ++) {
         /// x轴间隔
         CGFloat padding_x = (CGRectGetWidth(self.frame) - Origin_X * 2) / Count_NumberList + 2;
-        [bezierPath addLineToPoint:CGPointMake(Origin_X + padding_x * i, Origin_Y + [pointList[i] floatValue] * Scale_Y)];
+        [bezierPath addLineToPoint:CGPointMake(Origin_X + padding_x * i, Origin_Y - [pointList[i] floatValue] * Scale_Y)];
+        /// 画点
+        UIBezierPath *pointBezierPath = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(Origin_X + padding_x * i - 2, Origin_Y - [pointList[i] floatValue] * Scale_Y - 2, 4, 4)];
+        [lineColor setFill];
+        [pointBezierPath fill];
     }
     //  颜色
     [lineColor setStroke];

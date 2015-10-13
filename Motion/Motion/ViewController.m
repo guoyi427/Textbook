@@ -35,6 +35,8 @@
     SYPlotView *_plotView_motion_rotationRate;
     /// 统计图 重力角度
     SYPlotView *_plotView_motion_gravity;
+    /// 统计图 磁场
+    SYPlotView *_plotView_magnetometer;
 }
 @end
 
@@ -81,6 +83,9 @@
     
     _plotView_motion_gravity = [[SYPlotView alloc] initWithFrame:CGRectMake(0, 350, _screenSize.width, 100)];
     [self.view addSubview:_plotView_motion_gravity];
+    
+    _plotView_magnetometer = [[SYPlotView alloc] initWithFrame:CGRectMake(0, 460, _screenSize.width, 100)];
+    [self.view addSubview:_plotView_magnetometer];
 }
 
 #pragma mark - Private Methods
@@ -101,10 +106,14 @@
     [_plotView_motion_gravity addNumber1:[NSNumber numberWithFloat:_motionManager.deviceMotion.gravity.x]
                                  number2:[NSNumber numberWithFloat:_motionManager.deviceMotion.gravity.y]
                                  number3:[NSNumber numberWithFloat:_motionManager.deviceMotion.gravity.z]];
+    
+    [_plotView_magnetometer addNumber1:[NSNumber numberWithFloat:_motionManager.magnetometerData.magneticField.x]
+                               number2:[NSNumber numberWithFloat:_motionManager.magnetometerData.magneticField.y]
+                               number3:[NSNumber numberWithFloat:_motionManager.magnetometerData.magneticField.z]];
     NSLog(@"x = %f y = %f z = %f",
-          _motionManager.deviceMotion.gravity.x,
-          _motionManager.deviceMotion.gravity.y,
-          _motionManager.deviceMotion.gravity.z);
+          _motionManager.magnetometerData.magneticField.x,
+          _motionManager.magnetometerData.magneticField.y,
+          _motionManager.magnetometerData.magneticField.z);
     
 }
 
