@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		280D07541BB94024009A4430 /* SYView.m in Sources */ = {isa = PBXBuildFile; fileRef = 280D07531BB94024009A4430 /* SYView.m */; settings = {ASSET_TAGS = (); }; };
+		280D07571BB94158009A4430 /* SYAimingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 280D07561BB94158009A4430 /* SYAimingView.m */; settings = {ASSET_TAGS = (); }; };
 		28858F021BB009E000106689 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28858F011BB009E000106689 /* main.m */; };
 		28858F051BB009E000106689 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28858F041BB009E000106689 /* AppDelegate.m */; };
 		28858F081BB009E000106689 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28858F071BB009E000106689 /* ViewController.m */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		280D07521BB94024009A4430 /* SYView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYView.h; sourceTree = "<group>"; };
+		280D07531BB94024009A4430 /* SYView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYView.m; sourceTree = "<group>"; };
+		280D07551BB94158009A4430 /* SYAimingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYAimingView.h; sourceTree = "<group>"; };
+		280D07561BB94158009A4430 /* SYAimingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYAimingView.m; sourceTree = "<group>"; };
 		28858EFD1BB009E000106689 /* SliderView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SliderView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28858F011BB009E000106689 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28858F031BB009E000106689 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -118,6 +124,10 @@
 				28D43A511BB12F710033E70C /* SYCaptureView.m */,
 				28858F331BB009F300106689 /* SYGameView.h */,
 				28858F341BB009F300106689 /* SYGameView.m */,
+				280D07521BB94024009A4430 /* SYView.h */,
+				280D07531BB94024009A4430 /* SYView.m */,
+				280D07551BB94158009A4430 /* SYAimingView.h */,
+				280D07561BB94158009A4430 /* SYAimingView.m */,
 				28D43A531BB1561C0033E70C /* SYBulletView.h */,
 				28D43A541BB1561C0033E70C /* SYBulletView.m */,
 				28858F091BB009E000106689 /* Main.storyboard */,
@@ -288,8 +298,10 @@
 			files = (
 				28D43A551BB1561C0033E70C /* SYBulletView.m in Sources */,
 				28858F081BB009E000106689 /* ViewController.m in Sources */,
+				280D07541BB94024009A4430 /* SYView.m in Sources */,
 				28858F051BB009E000106689 /* AppDelegate.m in Sources */,
 				28858F021BB009E000106689 /* main.m in Sources */,
+				280D07571BB94158009A4430 /* SYAimingView.m in Sources */,
 				28D43A521BB12F710033E70C /* SYCaptureView.m in Sources */,
 				28858F351BB009F300106689 /* SYGameView.m in Sources */,
 			);

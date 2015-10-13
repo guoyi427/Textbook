@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28C012A71BCCE3BD00076722 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C012A61BCCE3BD00076722 /* GameViewController.m */; settings = {ASSET_TAGS = (); }; };
+		28C012AD1BCCE47800076722 /* SYTargetBoxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C012AC1BCCE47800076722 /* SYTargetBoxNode.m */; settings = {ASSET_TAGS = (); }; };
+		28F6697B1BBA1D3B005BC92E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F6697A1BBA1D3B005BC92E /* main.m */; };
+		28F6697E1BBA1D3B005BC92E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F6697D1BBA1D3B005BC92E /* AppDelegate.m */; };
+		28F669861BBA1D3B005BC92E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F669841BBA1D3B005BC92E /* Main.storyboard */; };
+		28F669881BBA1D3B005BC92E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28F669871BBA1D3B005BC92E /* Assets.xcassets */; };
+		28F6698B1BBA1D3B005BC92E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F669891BBA1D3B005BC92E /* LaunchScreen.storyboard */; };
+		28F669961BBA1D3C005BC92E /* ShooterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F669951BBA1D3C005BC92E /* ShooterTests.m */; };
+		28F669A11BBA1D3C005BC92E /* ShooterUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F669A01BBA1D3C005BC92E /* ShooterUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		28F669921BBA1D3C005BC92E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28F6696E1BBA1D3B005BC92E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28F669751BBA1D3B005BC92E;
+			remoteInfo = Shooter;
+		};
+		28F6699D1BBA1D3C005BC92E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28F6696E1BBA1D3B005BC92E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28F669751BBA1D3B005BC92E;
+			remoteInfo = Shooter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		28C012A51BCCE3BD00076722 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		28C012A61BCCE3BD00076722 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		28C012AB1BCCE47800076722 /* SYTargetBoxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTargetBoxNode.h; sourceTree = "<group>"; };
+		28C012AC1BCCE47800076722 /* SYTargetBoxNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTargetBoxNode.m; sourceTree = "<group>"; };
+		28F669761BBA1D3B005BC92E /* Shooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28F6697A1BBA1D3B005BC92E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		28F6697C1BBA1D3B005BC92E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		28F6697D1BBA1D3B005BC92E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		28F669851BBA1D3B005BC92E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		28F669871BBA1D3B005BC92E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28F6698A1BBA1D3B005BC92E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		28F6698C1BBA1D3B005BC92E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28F669911BBA1D3C005BC92E /* ShooterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShooterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		28F669951BBA1D3C005BC92E /* ShooterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShooterTests.m; sourceTree = "<group>"; };
+		28F669971BBA1D3C005BC92E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28F6699C1BBA1D3C005BC92E /* ShooterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShooterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		28F669A01BBA1D3C005BC92E /* ShooterUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShooterUITests.m; sourceTree = "<group>"; };
+		28F669A21BBA1D3C005BC92E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28F669731BBA1D3B005BC92E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28F6698E1BBA1D3C005BC92E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28F669991BBA1D3C005BC92E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28C0129D1BCCE35A00076722 /* SYGame */ = {
+			isa = PBXGroup;
+			children = (
+				28C0129E1BCCE35A00076722 /* Model */,
+				28C0129F1BCCE35A00076722 /* View */,
+				28C012A01BCCE35A00076722 /* ViewController */,
+			);
+			path = SYGame;
+			sourceTree = "<group>";
+		};
+		28C0129E1BCCE35A00076722 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		28C0129F1BCCE35A00076722 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28C012AB1BCCE47800076722 /* SYTargetBoxNode.h */,
+				28C012AC1BCCE47800076722 /* SYTargetBoxNode.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28C012A01BCCE35A00076722 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				28C012A51BCCE3BD00076722 /* GameViewController.h */,
+				28C012A61BCCE3BD00076722 /* GameViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		28C012A11BCCE35A00076722 /* SYMenu */ = {
+			isa = PBXGroup;
+			children = (
+				28C012A21BCCE35A00076722 /* Model */,
+				28C012A31BCCE35A00076722 /* View */,
+				28C012A41BCCE35A00076722 /* ViewController */,
+			);
+			path = SYMenu;
+			sourceTree = "<group>";
+		};
+		28C012A21BCCE35A00076722 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		28C012A31BCCE35A00076722 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28C012A41BCCE35A00076722 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		28F6696D1BBA1D3B005BC92E = {
+			isa = PBXGroup;
+			children = (
+				28F669781BBA1D3B005BC92E /* Shooter */,
+				28F669941BBA1D3C005BC92E /* ShooterTests */,
+				28F6699F1BBA1D3C005BC92E /* ShooterUITests */,
+				28F669771BBA1D3B005BC92E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		28F669771BBA1D3B005BC92E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28F669761BBA1D3B005BC92E /* Shooter.app */,
+				28F669911BBA1D3C005BC92E /* ShooterTests.xctest */,
+				28F6699C1BBA1D3C005BC92E /* ShooterUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28F669781BBA1D3B005BC92E /* Shooter */ = {
+			isa = PBXGroup;
+			children = (
+				28C0129D1BCCE35A00076722 /* SYGame */,
+				28C012A11BCCE35A00076722 /* SYMenu */,
+				28F6697C1BBA1D3B005BC92E /* AppDelegate.h */,
+				28F6697D1BBA1D3B005BC92E /* AppDelegate.m */,
+				28F669841BBA1D3B005BC92E /* Main.storyboard */,
+				28F669871BBA1D3B005BC92E /* Assets.xcassets */,
+				28F669891BBA1D3B005BC92E /* LaunchScreen.storyboard */,
+				28F6698C1BBA1D3B005BC92E /* Info.plist */,
+				28F669791BBA1D3B005BC92E /* Supporting Files */,
+			);
+			path = Shooter;
+			sourceTree = "<group>";
+		};
+		28F669791BBA1D3B005BC92E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				28F6697A1BBA1D3B005BC92E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		28F669941BBA1D3C005BC92E /* ShooterTests */ = {
+			isa = PBXGroup;
+			children = (
+				28F669951BBA1D3C005BC92E /* ShooterTests.m */,
+				28F669971BBA1D3C005BC92E /* Info.plist */,
+			);
+			path = ShooterTests;
+			sourceTree = "<group>";
+		};
+		28F6699F1BBA1D3C005BC92E /* ShooterUITests */ = {
+			isa = PBXGroup;
+			children = (
+				28F669A01BBA1D3C005BC92E /* ShooterUITests.m */,
+				28F669A21BBA1D3C005BC92E /* Info.plist */,
+			);
+			path = ShooterUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28F669751BBA1D3B005BC92E /* Shooter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28F669A51BBA1D3C005BC92E /* Build configuration list for PBXNativeTarget "Shooter" */;
+			buildPhases = (
+				28F669721BBA1D3B005BC92E /* Sources */,
+				28F669731BBA1D3B005BC92E /* Frameworks */,
+				28F669741BBA1D3B005BC92E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Shooter;
+			productName = Shooter;
+			productReference = 28F669761BBA1D3B005BC92E /* Shooter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		28F669901BBA1D3C005BC92E /* ShooterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28F669A81BBA1D3C005BC92E /* Build configuration list for PBXNativeTarget "ShooterTests" */;
+			buildPhases = (
+				28F6698D1BBA1D3C005BC92E /* Sources */,
+				28F6698E1BBA1D3C005BC92E /* Frameworks */,
+				28F6698F1BBA1D3C005BC92E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28F669931BBA1D3C005BC92E /* PBXTargetDependency */,
+			);
+			name = ShooterTests;
+			productName = ShooterTests;
+			productReference = 28F669911BBA1D3C005BC92E /* ShooterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		28F6699B1BBA1D3C005BC92E /* ShooterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28F669AB1BBA1D3C005BC92E /* Build configuration list for PBXNativeTarget "ShooterUITests" */;
+			buildPhases = (
+				28F669981BBA1D3C005BC92E /* Sources */,
+				28F669991BBA1D3C005BC92E /* Frameworks */,
+				28F6699A1BBA1D3C005BC92E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28F6699E1BBA1D3C005BC92E /* PBXTargetDependency */,
+			);
+			name = ShooterUITests;
+			productName = ShooterUITests;
+			productReference = 28F6699C1BBA1D3C005BC92E /* ShooterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28F6696E1BBA1D3B005BC92E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "郭毅";
+				TargetAttributes = {
+					28F669751BBA1D3B005BC92E = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 3X2765234N;
+					};
+					28F669901BBA1D3C005BC92E = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 28F669751BBA1D3B005BC92E;
+					};
+					28F6699B1BBA1D3C005BC92E = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 28F669751BBA1D3B005BC92E;
+					};
+				};
+			};
+			buildConfigurationList = 28F669711BBA1D3B005BC92E /* Build configuration list for PBXProject "Shooter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28F6696D1BBA1D3B005BC92E;
+			productRefGroup = 28F669771BBA1D3B005BC92E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28F669751BBA1D3B005BC92E /* Shooter */,
+				28F669901BBA1D3C005BC92E /* ShooterTests */,
+				28F6699B1BBA1D3C005BC92E /* ShooterUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28F669741BBA1D3B005BC92E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28F6698B1BBA1D3B005BC92E /* LaunchScreen.storyboard in Resources */,
+				28F669881BBA1D3B005BC92E /* Assets.xcassets in Resources */,
+				28F669861BBA1D3B005BC92E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28F6698F1BBA1D3C005BC92E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28F6699A1BBA1D3C005BC92E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28F669721BBA1D3B005BC92E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28F6697E1BBA1D3B005BC92E /* AppDelegate.m in Sources */,
+				28C012A71BCCE3BD00076722 /* GameViewController.m in Sources */,
+				28C012AD1BCCE47800076722 /* SYTargetBoxNode.m in Sources */,
+				28F6697B1BBA1D3B005BC92E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28F6698D1BBA1D3C005BC92E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28F669961BBA1D3C005BC92E /* ShooterTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28F669981BBA1D3C005BC92E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28F669A11BBA1D3C005BC92E /* ShooterUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		28F669931BBA1D3C005BC92E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28F669751BBA1D3B005BC92E /* Shooter */;
+			targetProxy = 28F669921BBA1D3C005BC92E /* PBXContainerItemProxy */;
+		};
+		28F6699E1BBA1D3C005BC92E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28F669751BBA1D3B005BC92E /* Shooter */;
+			targetProxy = 28F6699D1BBA1D3C005BC92E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		28F669841BBA1D3B005BC92E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28F669851BBA1D3B005BC92E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		28F669891BBA1D3B005BC92E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28F6698A1BBA1D3B005BC92E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		28F669A31BBA1D3C005BC92E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		28F669A41BBA1D3C005BC92E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		28F669A61BBA1D3C005BC92E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Shooter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.10020.Shooter.Shooter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		28F669A71BBA1D3C005BC92E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Shooter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.10020.Shooter.Shooter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		28F669A91BBA1D3C005BC92E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = ShooterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.10020.Shooter.ShooterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shooter.app/Shooter";
+			};
+			name = Debug;
+		};
+		28F669AA1BBA1D3C005BC92E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ShooterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.10020.Shooter.ShooterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shooter.app/Shooter";
+			};
+			name = Release;
+		};
+		28F669AC1BBA1D3C005BC92E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = ShooterUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.10020.Shooter.ShooterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Shooter;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		28F669AD1BBA1D3C005BC92E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ShooterUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.10020.Shooter.ShooterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Shooter;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28F669711BBA1D3B005BC92E /* Build configuration list for PBXProject "Shooter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28F669A31BBA1D3C005BC92E /* Debug */,
+				28F669A41BBA1D3C005BC92E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28F669A51BBA1D3C005BC92E /* Build configuration list for PBXNativeTarget "Shooter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28F669A61BBA1D3C005BC92E /* Debug */,
+				28F669A71BBA1D3C005BC92E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28F669A81BBA1D3C005BC92E /* Build configuration list for PBXNativeTarget "ShooterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28F669A91BBA1D3C005BC92E /* Debug */,
+				28F669AA1BBA1D3C005BC92E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28F669AB1BBA1D3C005BC92E /* Build configuration list for PBXNativeTarget "ShooterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28F669AC1BBA1D3C005BC92E /* Debug */,
+				28F669AD1BBA1D3C005BC92E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 28F6696E1BBA1D3B005BC92E /* Project object */;
+}
