@@ -80,7 +80,7 @@
     //  标签
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.textColor = [UIColor whiteColor];
-    _titleLabel.font = [UIFont systemFontOfSize:[UIScreen mainScreen].bounds.size.width / 20.0f];
+    _titleLabel.font = [UIFont systemFontOfSize:[UIScreen mainScreen].bounds.size.width / 15.0f];
     _titleLabel.adjustsFontSizeToFitWidth = YES;
     _titleLabel.textAlignment = NSTextAlignmentCenter;
 
