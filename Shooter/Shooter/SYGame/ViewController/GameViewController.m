@@ -7,7 +7,11 @@
 //
 
 #import "GameViewController.h"
+
 #import <SceneKit/SceneKit.h>
+
+//  View
+#import "SYTargetBoxNode.h"
 
 @interface GameViewController ()
 {
@@ -116,10 +120,13 @@ static NSUInteger Count_Box = 10;
 
 /// 计时器更新
 - (void)_updateTimerAction {
-    if (_agoTime % 20 == 0) {
+    if (_agoTime % 20 == 0 &&
+        _boxCache.count < Count_Box) {
         SCNBox *box = [SCNBox boxWithWidth:1 height:1 length:1 chamferRadius:0];
-        SCNNode *node_box = [SCNNode nodeWithGeometry:box];
-        node_box.position = SCNVector3Make(0, 0, 0);
+        SYTargetBoxNode *node_box = (SYTargetBoxNode *)[SYTargetBoxNode nodeWithGeometry:box];
+        float x = arc4random()%10;
+        float y = arc4random()%20;
+        node_box.position = SCNVector3Make(x - 5, y - 10, -3);
         node_box.physicsBody = [SCNPhysicsBody staticBody];
         [_scene.rootNode addChildNode:node_box];
         [_boxCache addObject:node_box];
