@@ -16,7 +16,7 @@
     bullect.center = center;
     bullect.backgroundColor = [UIColor clearColor];
     
-    [UIView animateWithDuration:1
+    [UIView animateWithDuration:3
                           delay:0.0f
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
@@ -53,7 +53,8 @@
     [starPath addLineToPoint: CGPointMake(0.24, 3.45)];
     [starPath addLineToPoint: CGPointMake(3.24, 2.57)];
     [starPath closePath];
-    [[UIColor yellowColor] setStroke];
+//    [[UIColor yellowColor] setStroke];
+    [[UIColor colorWithRed:arc4random()%255/255.0f green:arc4random()%255/255.0f blue:arc4random()%255/255.0f alpha:1] setStroke];
     starPath.lineWidth = 1.0f;
     [starPath stroke];
 }

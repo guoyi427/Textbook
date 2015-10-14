@@ -15,6 +15,8 @@
 - (void)addNumber:(NSNumber *)number;
 
 /// 添加 三个曲线
-- (void)addNumber1:(NSNumber *)number1 number2:(NSNumber *)number2 number3:(NSNumber *)number3;
+- (void)addNumber1:(NSNumber *)number1
+           number2:(NSNumber *)number2
+           number3:(NSNumber *)number3;
 
 @end

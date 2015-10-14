@@ -212,6 +212,7 @@
 				TargetAttributes = {
 					28C012B61BCCFF8400076722 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 3X2765234N;
 					};
 					28C012CF1BCCFF8400076722 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -419,6 +420,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Motion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.motion.Motion;
@@ -430,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Motion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.motion.Motion;
@@ -504,6 +507,7 @@
 				28C012E61BCCFF8400076722 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28C012E71BCCFF8400076722 /* Build configuration list for PBXNativeTarget "MotionTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +516,7 @@
 				28C012E91BCCFF8400076722 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28C012EA1BCCFF8400076722 /* Build configuration list for PBXNativeTarget "MotionUITests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +525,7 @@
 				28C012EC1BCCFF8400076722 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -56,7 +56,7 @@ static CGFloat Radius_Oval = 20.0f;
     _needShoot = NO;
 
     /// 计时器
-    _updateTimer = [NSTimer scheduledTimerWithTimeInterval:0.05
+    _updateTimer = [NSTimer scheduledTimerWithTimeInterval:0.01
                                                     target:self
                                                   selector:@selector(_updateTimerAction)
                                                   userInfo:nil
@@ -132,8 +132,13 @@ static CGFloat Radius_Oval = 20.0f;
     //  浮动盒子
     for (UIView *box in _boxCache) {
         CGRect newRect = box.frame;
+<<<<<<< HEAD
+//        newRect.origin.x += ;
+//        newRect.origin.y += ;
+=======
         newRect.origin.x += 0;
         newRect.origin.y += 0;
+>>>>>>> 85464e679d1afb5096f6e14219b084ec241c3b31
         box.frame = newRect;
     }
 }
@@ -143,7 +148,7 @@ static CGFloat Radius_Oval = 20.0f;
     [self setNeedsDisplay];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touche = touches.anyObject;
     CGPoint touchPoint = [touche locationInView:self];
     NSLog(@"手指粗细半径 = %f, %f",touche.majorRadius,touche.majorRadiusTolerance);
@@ -153,7 +158,7 @@ static CGFloat Radius_Oval = 20.0f;
     _needShoot = YES;
 }
 
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touche = touches.anyObject;
     
     CGPoint point = [touche locationInView:self];
@@ -161,11 +166,11 @@ static CGFloat Radius_Oval = 20.0f;
     [self updateViewWithOffset:CGPointMake(point.x + _paddingPoint.x, point.y + _paddingPoint.y)];
 }
 
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     _needShoot = NO;
 }
 
-- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     
 }
 
