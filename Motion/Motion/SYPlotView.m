@@ -33,7 +33,7 @@ static CGFloat Origin_Y = 50.0f;
 static CGFloat Origin_X = 10.0f;
 
 /// Y轴 缩放比
-static CGFloat Scale_Y = 20;
+CGFloat Scale_Y = 20;
 
 @implementation SYPlotView
 
@@ -72,6 +72,8 @@ static CGFloat Scale_Y = 20;
     }
 }
 
+#pragma mark - Private Methods
+
 /// 根据点 画线
 - (void)_drawBezierPathWithPointList:(NSArray *)pointList andLineColor:(UIColor *)lineColor {
     /// 以第一个点为起点开始画
@@ -94,19 +96,35 @@ static CGFloat Scale_Y = 20;
 
 }
 
+/// 计算最佳 描点的Y轴 缩放比
+- (CGFloat)_caculateScaleY {
+    CGFloat best_scale_y = 50.0f;
+    
+    
+    return best_scale_y;
+}
+
 #pragma mark - Public Methods
 
 /// 添加曲线的点 传进来一个 浮点型的值
 - (void)addNumber:(NSNumber *)number {
+    
+    //  将点 加入 描点数组中
     if (_numberList1.count >= Count_NumberList) {
         [_numberList1 removeObjectsInRange:NSMakeRange(0, Count_NumberList - _numberList1.count + 1)];
     }
     [_numberList1 addObject:number];
+    
+    //  计算最佳 描点Y轴 缩放比
+    Scale_Y = [self _caculateScaleY];
+    
     [self setNeedsDisplay];
 }
 
 /// 添加 三个曲线
 - (void)addNumber1:(NSNumber *)number1 number2:(NSNumber *)number2 number3:(NSNumber *)number3 {
+    
+    //  将点 加入 描点数组中
     if (_numberList1.count >= Count_NumberList) {
         [_numberList1 removeObjectsInRange:NSMakeRange(0, Count_NumberList - _numberList1.count + 1)];
     }
@@ -121,6 +139,9 @@ static CGFloat Scale_Y = 20;
         [_numberList3 removeObjectsInRange:NSMakeRange(0, Count_NumberList - _numberList3.count + 1)];
     }
     [_numberList3 addObject:number3];
+    
+    //  计算最佳 描点Y轴 缩放比
+    Scale_Y = [self _caculateScaleY];
     
     [self setNeedsDisplay];
 }
