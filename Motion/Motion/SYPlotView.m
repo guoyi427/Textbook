@@ -17,7 +17,8 @@
     NSMutableArray<NSNumber *> *_numberList2;
     /// 记录所有点的数组
     NSMutableArray<NSNumber *> *_numberList3;
-    
+    /// Y轴 缩放比
+    CGFloat Scale_Y;
 }
 
 @end
@@ -31,9 +32,6 @@ static CGFloat Origin_Y = 50.0f;
 
 /// 描点 X轴 零点坐标
 static CGFloat Origin_X = 10.0f;
-
-/// Y轴 缩放比
-CGFloat Scale_Y = 20;
 
 @implementation SYPlotView
 
@@ -93,12 +91,43 @@ CGFloat Scale_Y = 20;
 }
 
 /// 计算最佳 描点的Y轴 缩放比
-- (CGFloat)_caculateScaleY {
-    CGFloat best_scale_y = 50.0f;
+- (float)_caculateScaleY {
+    float best_scale_y = 50.0f;
     
+    /// 获取 数组元素最大绝对值
+    float bestValue1 = [self _caculateBastValueInNumberList:_numberList1];
+    float bestValue2 = [self _caculateBastValueInNumberList:_numberList2];
+    float bestValue3 = [self _caculateBastValueInNumberList:_numberList3];
+    
+    /// 获取 三个数组中最大值中  最大的数
+    float bestValue = [self _caculateBastValueInNumberList:@[[NSNumber numberWithFloat:bestValue1],
+                                                             [NSNumber numberWithFloat:bestValue2],
+                                                             [NSNumber numberWithFloat:bestValue3]]];
+    
+    ///  用 三个数组中的最大值 计算出 最合适的 Y轴缩放比  （屏幕高度的一半 / 最大值 = 上下无缝隙的缩放比）
+    best_scale_y = (CGRectGetHeight(self.frame) / 2.0f - 5) / bestValue;
+    
+    best_scale_y = best_scale_y < 50.0f ? best_scale_y : 50.0f;
     
     return best_scale_y;
 }
+
+/// 获取数组内元素的最大值
+- (float)_caculateBastValueInNumberList:(NSArray<NSNumber *> *)numberList {
+    /// 上一个值 也保存 最大值
+    float lastValue = 0.0f;
+    //  遍历查找 数组中 绝对值最大的数
+    for (NSNumber *tempNumber in numberList) {
+        /// 遍历的当前数值
+        float tempValue = [tempNumber floatValue];
+        /// 更新上一个数值 并且保存最大的
+        lastValue = fabsf(lastValue) > fabsf(tempValue) ? fabsf(lastValue) : fabsf(tempValue);
+    }
+    
+    return lastValue;
+}
+
+
 
 #pragma mark - Public Methods
 

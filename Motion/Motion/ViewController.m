@@ -110,11 +110,13 @@
     [_plotView_magnetometer addNumber1:[NSNumber numberWithFloat:_motionManager.magnetometerData.magneticField.x]
                                number2:[NSNumber numberWithFloat:_motionManager.magnetometerData.magneticField.y]
                                number3:[NSNumber numberWithFloat:_motionManager.magnetometerData.magneticField.z]];
+
+    /*
     NSLog(@"x = %f y = %f z = %f",
           _motionManager.magnetometerData.magneticField.x,
           _motionManager.magnetometerData.magneticField.y,
           _motionManager.magnetometerData.magneticField.z);
-    
+    */
 }
 
 @end
