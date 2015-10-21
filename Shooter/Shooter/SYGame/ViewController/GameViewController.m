@@ -127,9 +127,20 @@ static NSUInteger Count_Box = 10;
         float x = arc4random()%10;
         float y = arc4random()%20;
         node_box.position = SCNVector3Make(x - 5, y - 10, -3);
-        node_box.physicsBody = [SCNPhysicsBody staticBody];
         [_scene.rootNode addChildNode:node_box];
         [_boxCache addObject:node_box];
+        
+        SCNPyramid *pyramid = [SCNPyramid pyramidWithWidth:1 height:1 length:1];
+//        SCNNode *node_pyramid = [SCNNode nodeWithGeometry:pyramid];
+//        node_pyramid.position = SCNVector3Make(x - 5, y - 13, -3);
+//        [_scene.rootNode addChildNode:node_pyramid];
+        
+        SCNMorpher *morpher = [[SCNMorpher alloc] init];
+        morpher.targets = @[box,pyramid];
+        [morpher setWeight:1 forTargetAtIndex:0];
+        morpher.calculationMode = SCNMorpherCalculationModeNormalized;
+        node_box.morpher = morpher;
+
     }
     
     for (SCNNode *tempNode in _boxCache) {
@@ -138,6 +149,9 @@ static NSUInteger Count_Box = 10;
     
     _agoTime ++;
 }
+
+/// 发射子弹
+
 
 #pragma mark - Touch Delegate
 
