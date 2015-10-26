@@ -18,17 +18,23 @@
 AVCaptureFileOutputRecordingDelegate
 >
 {
+    //  Data
     /// 后置摄像头
     AVCaptureDevice *_backCaptureDevice;
     /// 前置摄像头
     AVCaptureDevice *_frontCaptureDevice;
-    
     /// 导出文件 output
     AVCaptureMovieFileOutput *_movieFileOutput;
+    /// 当前摄像头方向
+    BOOL _isCurrentBackCaptureDevice;
+    /// 拍摄会话
+    AVCaptureSession *_captureSession;
     
     //  UI
     /// 录制 完成 按钮
     UIButton *_recorderButton;
+    /// 前后置摄像头标志
+    UIView *_captureDeviceFlagView;
 }
 @end
 
@@ -54,7 +60,7 @@ AVCaptureFileOutputRecordingDelegate
 
 - (void)_prepareCapture {
     /// 拍摄会话
-    AVCaptureSession *session = [[AVCaptureSession alloc] init];
+    _captureSession = [[AVCaptureSession alloc] init];
     
     /// 设备
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
@@ -76,24 +82,26 @@ AVCaptureFileOutputRecordingDelegate
     _movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
     
     //  添加 输入 输出管理
-    if ([session canAddInput:deviceInput]) {
-        [session addInput:deviceInput];
+    if ([_captureSession canAddInput:deviceInput]) {
+        [_captureSession addInput:deviceInput];
+        _isCurrentBackCaptureDevice = YES;
     }
-    if ([session canAddOutput:_movieFileOutput]) {
-        [session addOutput:_movieFileOutput];
+    if ([_captureSession canAddOutput:_movieFileOutput]) {
+        [_captureSession addOutput:_movieFileOutput];
     }
     
     //  添加 展示视图
-    AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:session];
+    AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:_captureSession];
     previewLayer.frame = self.view.bounds;
     previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.view.layer addSublayer:previewLayer];
     
     //  拍摄会话开启
-    [session startRunning];
+    [_captureSession startRunning];
 }
 
 - (void)_prepareUI {
+    self.view.backgroundColor = [UIColor whiteColor];
     /// 录制 完成 按钮
     _recorderButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _recorderButton.frame = CGRectMake(CGRectGetWidth(self.view.frame) / 2 - 25,
@@ -113,6 +121,16 @@ AVCaptureFileOutputRecordingDelegate
     pushMovieListButton.backgroundColor = [UIColor whiteColor];
     [pushMovieListButton addTarget:self action:@selector(pushMoiveListButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pushMovieListButton];
+    
+    /// 切换前后摄像头
+    UILongPressGestureRecognizer *changeCaptureDeviceGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(changeCaptureDeviceGestureRecognizer:)];
+    changeCaptureDeviceGR.numberOfTouchesRequired = 2;
+    changeCaptureDeviceGR.minimumPressDuration = 1.0f;
+    [self.view addGestureRecognizer:changeCaptureDeviceGR];
+    
+    _captureDeviceFlagView = [[UIView alloc] initWithFrame:CGRectMake(10, 74, 5, 5)];
+    _captureDeviceFlagView.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:_captureDeviceFlagView];
 }
 
 #pragma mark - Private Methods 
@@ -140,9 +158,38 @@ AVCaptureFileOutputRecordingDelegate
 
 #pragma mark - Button Action
 
+/// 跳转电影列表
 - (void)pushMoiveListButtonAction {
     MovieListViewController *movieListVC = [[MovieListViewController alloc] init];
     [self.navigationController pushViewController:movieListVC animated:YES];
+}
+
+/// 切换摄像头
+- (void)changeCaptureDeviceGestureRecognizer:(UILongPressGestureRecognizer *)longPressGR {
+
+    if (longPressGR.state == UIGestureRecognizerStateBegan) {
+        NSError *error = nil;
+        [_captureSession beginConfiguration];
+        [_captureSession removeInput:_captureSession.inputs.firstObject];
+        if (_isCurrentBackCaptureDevice) {
+            //  后置
+            AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:_frontCaptureDevice error:&error];
+            if ([_captureSession canAddInput:deviceInput]) {
+                [_captureSession addInput:deviceInput];
+                _isCurrentBackCaptureDevice = NO;
+                _captureDeviceFlagView.backgroundColor = [UIColor redColor];
+            }
+        } else {
+            //  前置
+            AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:_backCaptureDevice error:&error];
+            if ([_captureSession canAddInput:deviceInput]) {
+                [_captureSession addInput:deviceInput];
+                _isCurrentBackCaptureDevice = YES;
+                _captureDeviceFlagView.backgroundColor = [UIColor greenColor];
+            }
+        }
+        [_captureSession commitConfiguration];
+    }
 }
 
 #pragma mark - AVCaptureVideoOutput Delegate
