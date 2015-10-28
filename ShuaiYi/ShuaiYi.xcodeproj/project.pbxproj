@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28BB50FB1BE0C364003D41DA /* UpLoadFTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BB50FA1BE0C364003D41DA /* UpLoadFTPManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		306FF8A41BD7CBCB009B8580 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FF8A31BD7CBCB009B8580 /* main.m */; };
 		306FF8A71BD7CBCB009B8580 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FF8A61BD7CBCB009B8580 /* AppDelegate.m */; };
 		306FF8AA1BD7CBCB009B8580 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FF8A91BD7CBCB009B8580 /* ViewController.m */; };
-		306FF8AD1BD7CBCB009B8580 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 306FF8AB1BD7CBCB009B8580 /* Main.storyboard */; };
 		306FF8AF1BD7CBCB009B8580 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 306FF8AE1BD7CBCB009B8580 /* Assets.xcassets */; };
 		306FF8B21BD7CBCB009B8580 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 306FF8B01BD7CBCB009B8580 /* LaunchScreen.storyboard */; };
 		306FF8BD1BD7CBCC009B8580 /* ShuaiYiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FF8BC1BD7CBCC009B8580 /* ShuaiYiTests.m */; };
 		306FF8C81BD7CBCC009B8580 /* ShuaiYiUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FF8C71BD7CBCC009B8580 /* ShuaiYiUITests.m */; };
-		306FF8D71BD7E651009B8580 /* MovieListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FF8D61BD7E651009B8580 /* MovieListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		306FF8D71BD7E651009B8580 /* MovieListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FF8D61BD7E651009B8580 /* MovieListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +36,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28BB50F91BE0C364003D41DA /* UpLoadFTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpLoadFTPManager.h; sourceTree = "<group>"; };
+		28BB50FA1BE0C364003D41DA /* UpLoadFTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpLoadFTPManager.m; sourceTree = "<group>"; };
 		306FF89F1BD7CBCB009B8580 /* ShuaiYi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShuaiYi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306FF8A31BD7CBCB009B8580 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		306FF8A51BD7CBCB009B8580 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		306FF8A61BD7CBCB009B8580 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		306FF8A81BD7CBCB009B8580 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		306FF8A91BD7CBCB009B8580 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		306FF8AC1BD7CBCB009B8580 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		306FF8AE1BD7CBCB009B8580 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		306FF8B11BD7CBCB009B8580 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		306FF8B31BD7CBCB009B8580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,7 +111,8 @@
 				306FF8A91BD7CBCB009B8580 /* ViewController.m */,
 				306FF8D51BD7E651009B8580 /* MovieListViewController.h */,
 				306FF8D61BD7E651009B8580 /* MovieListViewController.m */,
-				306FF8AB1BD7CBCB009B8580 /* Main.storyboard */,
+				28BB50F91BE0C364003D41DA /* UpLoadFTPManager.h */,
+				28BB50FA1BE0C364003D41DA /* UpLoadFTPManager.m */,
 				306FF8AE1BD7CBCB009B8580 /* Assets.xcassets */,
 				306FF8B01BD7CBCB009B8580 /* LaunchScreen.storyboard */,
 				306FF8B31BD7CBCB009B8580 /* Info.plist */,
@@ -250,7 +252,6 @@
 			files = (
 				306FF8B21BD7CBCB009B8580 /* LaunchScreen.storyboard in Resources */,
 				306FF8AF1BD7CBCB009B8580 /* Assets.xcassets in Resources */,
-				306FF8AD1BD7CBCB009B8580 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28BB50FB1BE0C364003D41DA /* UpLoadFTPManager.m in Sources */,
 				306FF8AA1BD7CBCB009B8580 /* ViewController.m in Sources */,
 				306FF8A71BD7CBCB009B8580 /* AppDelegate.m in Sources */,
 				306FF8A41BD7CBCB009B8580 /* main.m in Sources */,
@@ -314,14 +316,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		306FF8AB1BD7CBCB009B8580 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				306FF8AC1BD7CBCB009B8580 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		306FF8B01BD7CBCB009B8580 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -504,6 +498,7 @@
 				306FF8CE1BD7CBCC009B8580 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		306FF8CF1BD7CBCC009B8580 /* Build configuration list for PBXNativeTarget "ShuaiYiTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +507,7 @@
 				306FF8D11BD7CBCC009B8580 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		306FF8D21BD7CBCC009B8580 /* Build configuration list for PBXNativeTarget "ShuaiYiUITests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +516,7 @@
 				306FF8D41BD7CBCC009B8580 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
