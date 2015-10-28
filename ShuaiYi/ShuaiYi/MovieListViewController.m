@@ -84,10 +84,10 @@
     NSLog(@"cache = %@",_moviePathCache);
     
     /// 上传服务器路径
-    NSURL *uploadFileURL = [NSURL URLWithString:@"ftp://guoyi:jkl;'@192.168.11.99/Desktop/Cache/"];
+    NSURL *uploadFileURL = [NSURL URLWithString:@"ftp://guoyi:12345@192.168.16.102/Desktop/Cache/"];
     /// 上传请求
     NSMutableURLRequest *uploadRequest = [NSMutableURLRequest requestWithURL:uploadFileURL];
-    [uploadRequest setHTTPMethod:@"POST"];
+    [uploadRequest setHTTPMethod:@"PUT"];
     
     /// 上传文件路径
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
