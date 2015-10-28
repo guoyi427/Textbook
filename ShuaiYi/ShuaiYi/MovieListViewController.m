@@ -10,11 +10,14 @@
 
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "UpLoadFTPManager.h"
 
 @interface MovieListViewController () <UITableViewDataSource, UITableViewDelegate, NSURLSessionDelegate>
 {
     //  Data
     NSMutableArray *_moviePathCache;
+    /// 上传管理
+    UpLoadFTPManager *_fileManage;
     
     //  UI
     UITableView *_contentTableView;
@@ -83,8 +86,17 @@
 - (void)editContentTableViewAction {
     NSLog(@"cache = %@",_moviePathCache);
     
+    /// 上传文件路径
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *localFile = [documentPaths.firstObject stringByAppendingPathComponent:_moviePathCache.firstObject];
+
+    
+    _fileManage = [[UpLoadFTPManager alloc] init];
+    [_fileManage uploadFileWithPath:localFile];
+    
+    /*
     /// 上传服务器路径
-    NSURL *uploadFileURL = [NSURL URLWithString:@"ftp://guoyi:jkl;'@192.168.11.99/Desktop/Cache/"];
+    NSURL *uploadFileURL = [NSURL URLWithString:@"ftp://guoyi:jkl;'@192.168.11.249/Desktop/Cache/"];
     /// 上传请求
     NSMutableURLRequest *uploadRequest = [NSMutableURLRequest requestWithURL:uploadFileURL];
     [uploadRequest setHTTPMethod:@"POST"];
@@ -111,7 +123,13 @@
                                                             completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                                                 NSLog(@"error = %@ data = %@",error,data);
                                                             }];
+    NSURLSessionDataTask *dataTask = [uploadSession dataTaskWithRequest:uploadRequest
+                                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError *    _Nullable error) {
+                                                               
+                                                      }];
     [uploadTask resume];
+    [dataTask resume];
+     */
 }
 
 #pragma mark - URLSession Delegate
