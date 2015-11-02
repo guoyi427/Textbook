@@ -11,6 +11,7 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "UpLoadFTPManager.h"
+#import "UploadFTPSession.h"
 
 @interface MovieListViewController () <UITableViewDataSource, UITableViewDelegate, NSURLSessionDelegate>
 {
@@ -91,9 +92,11 @@
     NSString *localFile = [documentPaths.firstObject stringByAppendingPathComponent:_moviePathCache.firstObject];
 
     
-    _fileManage = [[UpLoadFTPManager alloc] init];
-    [_fileManage uploadFileWithPath:localFile];
+//    _fileManage = [[UpLoadFTPManager alloc] init];
+//    [_fileManage uploadFileWithPath:localFile];
     
+    UploadFTPSession *session = [[UploadFTPSession alloc] init];
+    [session uploadFileWithPath:@""];
     /*
     /// 上传服务器路径
     NSURL *uploadFileURL = [NSURL URLWithString:@"ftp://guoyi:jkl;'@192.168.11.249/Desktop/Cache/"];

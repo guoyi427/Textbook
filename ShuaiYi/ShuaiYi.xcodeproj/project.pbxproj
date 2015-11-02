@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		28BB50FB1BE0C364003D41DA /* UpLoadFTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BB50FA1BE0C364003D41DA /* UpLoadFTPManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28EF45541BE1B5BD0075AC43 /* UploadFTPSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF45531BE1B5BD0075AC43 /* UploadFTPSession.m */; };
+		28F268CC1BE7274B00E800B4 /* caiDanProfile.ped in Resources */ = {isa = PBXBuildFile; fileRef = 28F268CB1BE7274B00E800B4 /* caiDanProfile.ped */; };
 		306FF8A41BD7CBCB009B8580 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FF8A31BD7CBCB009B8580 /* main.m */; };
 		306FF8A71BD7CBCB009B8580 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FF8A61BD7CBCB009B8580 /* AppDelegate.m */; };
 		306FF8AA1BD7CBCB009B8580 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FF8A91BD7CBCB009B8580 /* ViewController.m */; };
@@ -38,6 +40,9 @@
 /* Begin PBXFileReference section */
 		28BB50F91BE0C364003D41DA /* UpLoadFTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpLoadFTPManager.h; sourceTree = "<group>"; };
 		28BB50FA1BE0C364003D41DA /* UpLoadFTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpLoadFTPManager.m; sourceTree = "<group>"; };
+		28EF45521BE1B5BD0075AC43 /* UploadFTPSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadFTPSession.h; sourceTree = "<group>"; };
+		28EF45531BE1B5BD0075AC43 /* UploadFTPSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadFTPSession.m; sourceTree = "<group>"; };
+		28F268CB1BE7274B00E800B4 /* caiDanProfile.ped */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = caiDanProfile.ped; sourceTree = "<group>"; };
 		306FF89F1BD7CBCB009B8580 /* ShuaiYi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShuaiYi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306FF8A31BD7CBCB009B8580 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		306FF8A51BD7CBCB009B8580 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 		306FF8A11BD7CBCB009B8580 /* ShuaiYi */ = {
 			isa = PBXGroup;
 			children = (
+				28F268CB1BE7274B00E800B4 /* caiDanProfile.ped */,
 				306FF8A51BD7CBCB009B8580 /* AppDelegate.h */,
 				306FF8A61BD7CBCB009B8580 /* AppDelegate.m */,
 				306FF8A81BD7CBCB009B8580 /* ViewController.h */,
@@ -113,6 +119,8 @@
 				306FF8D61BD7E651009B8580 /* MovieListViewController.m */,
 				28BB50F91BE0C364003D41DA /* UpLoadFTPManager.h */,
 				28BB50FA1BE0C364003D41DA /* UpLoadFTPManager.m */,
+				28EF45521BE1B5BD0075AC43 /* UploadFTPSession.h */,
+				28EF45531BE1B5BD0075AC43 /* UploadFTPSession.m */,
 				306FF8AE1BD7CBCB009B8580 /* Assets.xcassets */,
 				306FF8B01BD7CBCB009B8580 /* LaunchScreen.storyboard */,
 				306FF8B31BD7CBCB009B8580 /* Info.plist */,
@@ -250,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28F268CC1BE7274B00E800B4 /* caiDanProfile.ped in Resources */,
 				306FF8B21BD7CBCB009B8580 /* LaunchScreen.storyboard in Resources */,
 				306FF8AF1BD7CBCB009B8580 /* Assets.xcassets in Resources */,
 			);
@@ -280,6 +289,7 @@
 				306FF8AA1BD7CBCB009B8580 /* ViewController.m in Sources */,
 				306FF8A71BD7CBCB009B8580 /* AppDelegate.m in Sources */,
 				306FF8A41BD7CBCB009B8580 /* main.m in Sources */,
+				28EF45541BE1B5BD0075AC43 /* UploadFTPSession.m in Sources */,
 				306FF8D71BD7E651009B8580 /* MovieListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
