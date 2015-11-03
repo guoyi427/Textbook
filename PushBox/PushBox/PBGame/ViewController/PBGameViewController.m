@@ -20,6 +20,9 @@
 }
 @end
 
+/// 游戏背景的横向缝隙
+static CGFloat Padding_GameBackgroundView_Horizontal = 20.0f;
+
 @implementation PBGameViewController
 
 - (void)viewDidLoad {
@@ -44,7 +47,12 @@
     self.view.backgroundColor = [UIColor blackColor];
     
     /// 游戏背景
-    PBGameBackgroundView *backgroundView = [PBGameBackgroundView gameBackgroundViewWithFrame:CGRectMake(0, 0, _screenSize.width, _screenSize.height) andHorizontal:5 andVertical:3];
+    PBGameBackgroundView *backgroundView = [PBGameBackgroundView gameBackgroundViewWithFrame:CGRectMake(0, 0,
+                                                                                                        _screenSize.width - Padding_GameBackgroundView_Horizontal * 2,
+                                                                                                        _screenSize.height - 150)
+                                                                               andHorizontal:2
+                                                                                 andVertical:5];
+    backgroundView.center = self.view.center;
     [self.view addSubview:backgroundView];
     
 }

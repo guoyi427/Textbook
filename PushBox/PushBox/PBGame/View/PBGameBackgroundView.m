@@ -18,10 +18,12 @@ static CGFloat Padding_Box = 2.0f;
 
 @interface PBGameBackgroundView ()
 {
-    /// Data
+    //  Data
     
     
-    /// UI
+    //  UI
+    /// 盒子的父视图
+    UIView *_centerBackgroundView;
     
 }
 
@@ -51,20 +53,44 @@ static CGFloat Padding_Box = 2.0f;
 #pragma mark - Prepare
 
 - (void)_prepareUI {
-//    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    [PBGameManager instance].boxWidth = (CGRectGetWidth(self.frame) - Padding_Background * 2) / _horizontalCount;
+    
+    float float_horizontalCount = _horizontalCount;
+    float float_verticalCount = _verticalCount;
+    
+    /// 横向 单个宽度
+    CGFloat width_horizontal = CGRectGetWidth(self.frame) / float_horizontalCount;
+    /// 纵向 单个高度
+    CGFloat height_vertical = CGRectGetHeight(self.frame) / float_verticalCount;
+    
+    //  正方形 盒子的 宽度      哪个小 用哪个
+    [PBGameManager instance].boxWidth = width_horizontal < height_vertical ? width_horizontal : height_vertical;
     
     /// 其中的视图
-    UIView *centerBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), [PBGameManager instance].boxWidth * _verticalCount)];
-    centerBackgroundView.center = self.center;
-    [self addSubview:centerBackgroundView];
+    _centerBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
+                                                                    [PBGameManager instance].boxWidth * _horizontalCount,
+                                                                    [PBGameManager instance].boxWidth * _verticalCount)];
+    _centerBackgroundView.center = self.center;
+    _centerBackgroundView.backgroundColor = [UIColor grayColor];
+    [self addSubview:_centerBackgroundView];
     
-    
-    for (int i = 1; i < _horizontalCount; i ++) {
-        UIView *verticalLine = [[UIView alloc] initWithFrame:CGRectMake([PBGameManager instance].boxWidth * i, 0,
-                                                                        0.5, CGRectGetHeight(self.frame))];
+    /// 竖纹
+    for (int i = 0; i <= _horizontalCount; i ++) {
+        UIView *verticalLine = [[UIView alloc] initWithFrame:CGRectMake([PBGameManager instance].boxWidth * i,
+                                                                        0,
+                                                                        0.5,
+                                                                        CGRectGetHeight(_centerBackgroundView.frame))];
         verticalLine.backgroundColor = [UIColor whiteColor];
-        [self addSubview:verticalLine];
+        [_centerBackgroundView addSubview:verticalLine];
+    }
+    
+    /// 横纹
+    for (int i = 0; i <= _verticalCount; i ++) {
+        UIView *horizontalLine = [[UIView alloc] initWithFrame:CGRectMake(0,
+                                                                          [PBGameManager instance].boxWidth * i,
+                                                                          CGRectGetWidth(_centerBackgroundView.frame),
+                                                                          0.5)];
+        horizontalLine.backgroundColor = [UIColor whiteColor];
+        [_centerBackgroundView addSubview:horizontalLine];
     }
     
 }
