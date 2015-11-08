@@ -11,6 +11,7 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "UpLoadFTPManager.h"
+#import "UploadFTPSession.h"
 
 @interface MovieListViewController () <UITableViewDataSource, UITableViewDelegate, NSURLSessionDelegate>
 {
@@ -90,8 +91,52 @@
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *localFile = [documentPaths.firstObject stringByAppendingPathComponent:_moviePathCache.firstObject];
     
+<<<<<<< HEAD
     _fileManage = [[UpLoadFTPManager alloc] init];
     [_fileManage uploadFileWithPath:localFile];
+=======
+//    _fileManage = [[UpLoadFTPManager alloc] init];
+//    [_fileManage uploadFileWithPath:localFile];
+    
+    UploadFTPSession *session = [[UploadFTPSession alloc] init];
+    [session uploadFileWithPath:@""];
+    /*
+    /// 上传服务器路径
+    NSURL *uploadFileURL = [NSURL URLWithString:@"ftp://guoyi:jkl;'@192.168.11.249/Desktop/Cache/"];
+    /// 上传请求
+    NSMutableURLRequest *uploadRequest = [NSMutableURLRequest requestWithURL:uploadFileURL];
+    [uploadRequest setHTTPMethod:@"PUT"];
+    
+    /// 上传文件路径
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSURL *localFileURL = [NSURL URLWithString:[documentPaths.firstObject stringByAppendingPathComponent:_moviePathCache.firstObject]];
+    
+    /// 请求设置
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    configuration.timeoutIntervalForRequest = 30.0f;
+    configuration.timeoutIntervalForResource = 60.0f;
+    configuration.allowsCellularAccess = YES;
+    configuration.HTTPMaximumConnectionsPerHost = 1;
+    
+    /// 网络回话
+    NSURLSession *uploadSession = [NSURLSession sessionWithConfiguration:configuration
+                                                                delegate:self
+                                                           delegateQueue:[NSOperationQueue mainQueue]];
+    
+    /// 上传任务
+    NSURLSessionUploadTask *uploadTask = [uploadSession uploadTaskWithRequest:uploadRequest
+                                                                     fromFile:localFileURL
+                                                            completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                                                NSLog(@"error = %@ data = %@",error,data);
+                                                            }];
+    NSURLSessionDataTask *dataTask = [uploadSession dataTaskWithRequest:uploadRequest
+                                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError *    _Nullable error) {
+                                                               
+                                                      }];
+    [uploadTask resume];
+    [dataTask resume];
+     */
+>>>>>>> 9208c50ce82025d14dbc6124a6896b2f1285cac2
 }
 
 #pragma mark - URLSession Delegate
