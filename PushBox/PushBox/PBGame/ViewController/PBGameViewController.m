@@ -50,8 +50,8 @@ static CGFloat Padding_GameBackgroundView_Horizontal = 20.0f;
     PBGameBackgroundView *backgroundView = [PBGameBackgroundView gameBackgroundViewWithFrame:CGRectMake(0, 0,
                                                                                                         _screenSize.width - Padding_GameBackgroundView_Horizontal * 2,
                                                                                                         _screenSize.height - 150)
-                                                                               andHorizontal:2
-                                                                                 andVertical:2];
+                                                                               andHorizontal:6
+                                                                                 andVertical:5];
     backgroundView.center = self.view.center;
     [self.view addSubview:backgroundView];
     
