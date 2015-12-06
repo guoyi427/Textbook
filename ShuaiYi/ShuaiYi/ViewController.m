@@ -12,6 +12,8 @@
 
 #import "MovieListViewController.h"
 
+#import "GPUImage.h"
+
 @interface ViewController ()
 <
 //AVCaptureVideoDataOutputSampleBufferDelegate,
@@ -35,6 +37,13 @@ AVCaptureFileOutputRecordingDelegate
     UIButton *_recorderButton;
     /// 前后置摄像头标志
     UIView *_captureDeviceFlagView;
+    
+    //  GPU
+    GPUImageVideoCamera *_videoCamera;
+    GPUImageMovieWriter *_movieWriter;
+    /// 磨皮
+    GPUImageBilateralFilter<GPUImageInput> *_filter1;
+    GPUImageBrightnessFilter<GPUImageInput> *_filter2;
 }
 @end
 
@@ -43,7 +52,8 @@ AVCaptureFileOutputRecordingDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self _prepareData];
-    [self _prepareCapture];
+//    [self _prepareCapture];
+    [self _prepareGPUImage_Capture];
     [self _prepareUI];
 }
 
@@ -100,13 +110,49 @@ AVCaptureFileOutputRecordingDelegate
     [_captureSession startRunning];
 }
 
+/// 准备GPUImage
+- (void)_prepareGPUImage_Capture {
+    _videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
+    _videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    _videoCamera.horizontallyMirrorFrontFacingCamera = NO;
+    _videoCamera.horizontallyMirrorRearFacingCamera = NO;
+    
+    /// 磨皮
+    _filter1 = [[GPUImageBilateralFilter alloc] init];
+    [_videoCamera addTarget:_filter1];
+    
+    /// 美白
+    _filter2 = [[GPUImageBrightnessFilter alloc] init];
+    [_videoCamera addTarget:_filter2];
+    
+    /// 滤镜组
+//    GPUImageFilterGroup *filterGroup = [[GPUImageFilterGroup alloc] init];
+//    filterGroup.initialFilters = @[_filter1,_filter2];
+//    filterGroup.terminalFilter = _filter1;
+//    [_videoCamera addTarget:filterGroup];
+
+    GPUImageView *filterView = [[GPUImageView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:filterView];
+    
+    [_filter1 addTarget:filterView];
+    [_filter2 addTarget:filterView];
+    [_videoCamera startCameraCapture];
+    
+}
+
 - (void)_prepareUI {
     self.view.backgroundColor = [UIColor whiteColor];
+//    [self _prepareRecoderUI];
+    [self _prepareFilterUI];
+}
+
+/// 录像UI
+- (void)_prepareRecoderUI {
     /// 录制 完成 按钮
     _recorderButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _recorderButton.frame = CGRectMake(CGRectGetWidth(self.view.frame) / 2 - 25,
-                                      CGRectGetHeight(self.view.frame) - 50,
-                                      50, 50);
+                                       CGRectGetHeight(self.view.frame) - 50,
+                                       50, 50);
     _recorderButton.backgroundColor = [UIColor whiteColor];
     _recorderButton.layer.cornerRadius = 25.0f;
     _recorderButton.layer.masksToBounds = YES;
@@ -131,6 +177,27 @@ AVCaptureFileOutputRecordingDelegate
     _captureDeviceFlagView = [[UIView alloc] initWithFrame:CGRectMake(10, 74, 5, 5)];
     _captureDeviceFlagView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:_captureDeviceFlagView];
+
+}
+
+- (void)_prepareFilterUI {
+    UISlider *bilateralFilterSlider = [[UISlider alloc] initWithFrame:CGRectMake(20,
+                                                                                 CGRectGetHeight(self.view.frame) - 70,
+                                                                                 CGRectGetWidth(self.view.frame) - 40,
+                                                                                  30)];
+    [bilateralFilterSlider addTarget:self action:@selector(bilateralFilterSliderAction:) forControlEvents:UIControlEventValueChanged];
+    bilateralFilterSlider.minimumValue = 0.0f;
+    bilateralFilterSlider.maximumValue = 20.0f;
+    [self.view addSubview:bilateralFilterSlider];
+    
+    UISlider *brightnessFilterSlider = [[UISlider alloc] initWithFrame:CGRectMake(20,
+                                                                                  CGRectGetHeight(self.view.frame) - 30,
+                                                                                  CGRectGetWidth(self.view.frame) - 40,
+                                                                                  30)];
+    [brightnessFilterSlider addTarget:self action:@selector(brightnessFilterSliderAction:) forControlEvents:UIControlEventValueChanged];
+    brightnessFilterSlider.minimumValue = 0.0f;
+    brightnessFilterSlider.maximumValue = 0.2f;
+    [self.view addSubview:brightnessFilterSlider];
 }
 
 #pragma mark - Private Methods 
@@ -191,6 +258,19 @@ AVCaptureFileOutputRecordingDelegate
         [_captureSession commitConfiguration];
     }
 }
+
+/// 磨皮滤镜滚动条
+- (void)bilateralFilterSliderAction:(UISlider *)slider {
+    NSLog(@"磨皮value = %f",slider.value);
+    _filter1.distanceNormalizationFactor = 25 - slider.value;
+}
+
+/// 美白滤镜滚动条
+- (void)brightnessFilterSliderAction:(UISlider *)slider {
+    NSLog(@"美白value = %f",slider.value);
+    _filter2.brightness = slider.value;
+}
+
 
 #pragma mark - AVCaptureVideoOutput Delegate
 
