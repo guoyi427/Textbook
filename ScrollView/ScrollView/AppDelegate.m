@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  ShowSTL
+//  ScrollView
 //
-//  Created by guoyi on 15/9/1.
-//  Copyright (c) 2015年 guoyi. All rights reserved.
+//  Created by guoyi on 15/11/4.
+//  Copyright © 2015年 郭毅. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -17,7 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
     return YES;
 }
 

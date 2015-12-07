@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28C17C181BE9F025007B223F /* PBGameCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C17C171BE9F025007B223F /* PBGameCellModel.m */; };
 		28F268DB1BE73E4300E800B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F268DA1BE73E4300E800B4 /* main.m */; };
 		28F268DE1BE73E4300E800B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F268DD1BE73E4300E800B4 /* AppDelegate.m */; };
 		28F268E61BE73E4300E800B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28F268E51BE73E4300E800B4 /* Assets.xcassets */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28C17C161BE9F025007B223F /* PBGameCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBGameCellModel.h; sourceTree = "<group>"; };
+		28C17C171BE9F025007B223F /* PBGameCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBGameCellModel.m; sourceTree = "<group>"; };
 		28F268D61BE73E4300E800B4 /* PushBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28F268DA1BE73E4300E800B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28F268DC1BE73E4300E800B4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 			children = (
 				28F269261BE76B3200E800B4 /* PBGameManager.h */,
 				28F269271BE76B3200E800B4 /* PBGameManager.m */,
+				28C17C161BE9F025007B223F /* PBGameCellModel.h */,
+				28C17C171BE9F025007B223F /* PBGameCellModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28F269191BE7447C00E800B4 /* PBGameViewController.m in Sources */,
+				28C17C181BE9F025007B223F /* PBGameCellModel.m in Sources */,
 				28F268DE1BE73E4300E800B4 /* AppDelegate.m in Sources */,
 				28F268DB1BE73E4300E800B4 /* main.m in Sources */,
 				28F2691F1BE7462400E800B4 /* PBBox.m in Sources */,
@@ -577,6 +583,7 @@
 				28F269051BE73E4400E800B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28F269061BE73E4400E800B4 /* Build configuration list for PBXNativeTarget "PushBoxTests" */ = {
 			isa = XCConfigurationList;
@@ -585,6 +592,7 @@
 				28F269081BE73E4400E800B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28F269091BE73E4400E800B4 /* Build configuration list for PBXNativeTarget "PushBoxUITests" */ = {
 			isa = XCConfigurationList;
@@ -593,6 +601,7 @@
 				28F2690B1BE73E4400E800B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

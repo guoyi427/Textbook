@@ -19,8 +19,9 @@ static CGFloat Padding_Box = 2.0f;
 @interface PBGameBackgroundView ()
 {
     //  Data
-    
-    
+    /// 矩阵数组
+    NSArray<NSArray *> *_matrixArray;
+
     //  UI
     /// 盒子的父视图
     UIView *_centerBackgroundView;
@@ -92,7 +93,6 @@ static CGFloat Padding_Box = 2.0f;
         horizontalLine.backgroundColor = [UIColor whiteColor];
         [_centerBackgroundView addSubview:horizontalLine];
     }
-    
 }
 
 @end

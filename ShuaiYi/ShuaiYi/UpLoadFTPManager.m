@@ -56,11 +56,11 @@ enum {
 - (void)uploadFileWithPath:(NSString *)filePath {
 
     /// 主机名
-    NSString *hostName = @"ftp://192.168.16.103/Desktop/Cache";
+    NSString *hostName = @"ftp://192.168.11.31/Desktop/Cache";
     /// 用户名
     NSString *userName = @"guoyi";
     /// 用户密码
-    NSString *password = @"12345";
+    NSString *password = @"jkl;'";
     /// 写入URL
 //    NSURL *writeURL = [NSURL URLWithString:[hostName stringByAppendingPathComponent:[filePath lastPathComponent]]];
     
@@ -84,6 +84,13 @@ enum {
     //  跑起来  傻金 (づ￣ 3￣)づ
     [_outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [_outputStream open];
+    
+    
+    NSTimer *aiyoTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(update) userInfo:nil repeats:YES];
+}
+
+- (void)update {
+    NSLog(@"state = %lu",(unsigned long)_outputStream.streamStatus);
 }
 
 #pragma mark - NSOutputStream Delegate
