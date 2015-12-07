@@ -56,7 +56,11 @@ enum {
 - (void)uploadFileWithPath:(NSString *)filePath {
 
     /// 主机名
+<<<<<<< HEAD
     NSString *hostName = @"ftp://192.168.11.31/Desktop/Cache";
+=======
+    NSString *hostName = @"ftp://118.199.17.71/Desktop/Cache";
+>>>>>>> 11f837fee397e32550202c854ea6d335ae9e4536
     /// 用户名
     NSString *userName = @"guoyi";
     /// 用户密码

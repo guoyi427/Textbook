@@ -90,6 +90,7 @@
     /// 上传文件路径
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *localFile = [documentPaths.firstObject stringByAppendingPathComponent:_moviePathCache.firstObject];
+<<<<<<< HEAD
 
     
     _fileManage = [[UpLoadFTPManager alloc] init];
@@ -119,20 +120,11 @@
     NSURLSession *uploadSession = [NSURLSession sessionWithConfiguration:configuration
                                                                 delegate:self
                                                            delegateQueue:[NSOperationQueue mainQueue]];
+=======
+>>>>>>> 11f837fee397e32550202c854ea6d335ae9e4536
     
-    /// 上传任务
-    NSURLSessionUploadTask *uploadTask = [uploadSession uploadTaskWithRequest:uploadRequest
-                                                                     fromFile:localFileURL
-                                                            completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                                                                NSLog(@"error = %@ data = %@",error,data);
-                                                            }];
-    NSURLSessionDataTask *dataTask = [uploadSession dataTaskWithRequest:uploadRequest
-                                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError *    _Nullable error) {
-                                                               
-                                                      }];
-    [uploadTask resume];
-    [dataTask resume];
-     */
+    _fileManage = [[UpLoadFTPManager alloc] init];
+    [_fileManage uploadFileWithPath:localFile];
 }
 
 #pragma mark - URLSession Delegate
