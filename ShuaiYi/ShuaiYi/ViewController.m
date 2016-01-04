@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 #import <AVFoundation/AVFoundation.h>
+#import <CoreImage/CoreImage.h>
 
 #import "MovieListViewController.h"
 
@@ -44,6 +45,7 @@ AVCaptureFileOutputRecordingDelegate
     /// 磨皮
     GPUImageBilateralFilter<GPUImageInput> *_filter1;
     GPUImageBrightnessFilter<GPUImageInput> *_filter2;
+    GPUImageView *_filterView;
 }
 @end
 
@@ -112,7 +114,7 @@ AVCaptureFileOutputRecordingDelegate
 
 /// 准备GPUImage
 - (void)_prepareGPUImage_Capture {
-    _videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
+    _videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionFront];
     _videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     _videoCamera.horizontallyMirrorFrontFacingCamera = NO;
     _videoCamera.horizontallyMirrorRearFacingCamera = NO;
@@ -181,7 +183,7 @@ AVCaptureFileOutputRecordingDelegate
 }
 
 - (void)_prepareFilterUI {
-    UISlider *bilateralFilterSlider = [[UISlider alloc] initWithFrame:CGRectMake(20,
+    UISlider *bilateralFilterSlider = [[UISlider alloc]  initWithFrame:CGRectMake(20,
                                                                                  CGRectGetHeight(self.view.frame) - 70,
                                                                                  CGRectGetWidth(self.view.frame) - 40,
                                                                                   30)];
@@ -197,7 +199,8 @@ AVCaptureFileOutputRecordingDelegate
     [brightnessFilterSlider addTarget:self action:@selector(brightnessFilterSliderAction:) forControlEvents:UIControlEventValueChanged];
     brightnessFilterSlider.minimumValue = 0.0f;
     brightnessFilterSlider.maximumValue = 0.2f;
-    [self.view addSubview:brightnessFilterSlider];
+//    [self.view addSubview:brightnessFilterSlider];
+    
 }
 
 #pragma mark - Private Methods 
@@ -222,6 +225,7 @@ AVCaptureFileOutputRecordingDelegate
     [_recorderButton addTarget:self action:@selector(_startRecording) forControlEvents:UIControlEventTouchUpInside];
     _recorderButton.backgroundColor = [UIColor whiteColor];
 }
+
 
 #pragma mark - Button Action
 
