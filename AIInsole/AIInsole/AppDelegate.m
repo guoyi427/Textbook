@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "AIHomeViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    AIHomeViewController *homeVC = [[AIHomeViewController alloc] init];
+    self.window.rootViewController = homeVC;
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

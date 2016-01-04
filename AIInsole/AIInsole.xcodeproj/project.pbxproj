@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		28E0B4A41C3A676C00029724 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0B4A31C3A676C00029724 /* main.m */; };
 		28E0B4A71C3A676C00029724 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0B4A61C3A676C00029724 /* AppDelegate.m */; };
-		28E0B4AA1C3A676C00029724 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0B4A91C3A676C00029724 /* ViewController.m */; };
-		28E0B4AD1C3A676C00029724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E0B4AB1C3A676C00029724 /* Main.storyboard */; };
 		28E0B4AF1C3A676C00029724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E0B4AE1C3A676C00029724 /* Assets.xcassets */; };
-		28E0B4B21C3A676C00029724 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E0B4B01C3A676C00029724 /* LaunchScreen.storyboard */; };
 		28E0B4BD1C3A676C00029724 /* AIInsoleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0B4BC1C3A676C00029724 /* AIInsoleTests.m */; };
 		28E0B4C81C3A676C00029724 /* AIInsoleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0B4C71C3A676C00029724 /* AIInsoleUITests.m */; };
+		28E0B4E31C3A72F000029724 /* AIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0B4E21C3A72F000029724 /* AIViewController.m */; };
+		28E0B4E61C3A730A00029724 /* AIHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0B4E51C3A730A00029724 /* AIHomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,11 +38,7 @@
 		28E0B4A31C3A676C00029724 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28E0B4A51C3A676C00029724 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		28E0B4A61C3A676C00029724 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		28E0B4A81C3A676C00029724 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		28E0B4A91C3A676C00029724 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		28E0B4AC1C3A676C00029724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28E0B4AE1C3A676C00029724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		28E0B4B11C3A676C00029724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28E0B4B31C3A676C00029724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28E0B4B81C3A676C00029724 /* AIInsoleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AIInsoleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E0B4BC1C3A676C00029724 /* AIInsoleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIInsoleTests.m; sourceTree = "<group>"; };
@@ -51,6 +46,10 @@
 		28E0B4C31C3A676C00029724 /* AIInsoleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AIInsoleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E0B4C71C3A676C00029724 /* AIInsoleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIInsoleUITests.m; sourceTree = "<group>"; };
 		28E0B4C91C3A676C00029724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28E0B4E11C3A72F000029724 /* AIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIViewController.h; sourceTree = "<group>"; };
+		28E0B4E21C3A72F000029724 /* AIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIViewController.m; sourceTree = "<group>"; };
+		28E0B4E41C3A730A00029724 /* AIHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIHomeViewController.h; sourceTree = "<group>"; };
+		28E0B4E51C3A730A00029724 /* AIHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIHomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +100,12 @@
 		28E0B4A11C3A676C00029724 /* AIInsole */ = {
 			isa = PBXGroup;
 			children = (
+				28E0B4DD1C3A72DA00029724 /* AIBase */,
+				28E0B4D51C3A72AB00029724 /* AIHome */,
+				28E0B4D91C3A72AB00029724 /* AILoginAndRegister */,
 				28E0B4A51C3A676C00029724 /* AppDelegate.h */,
 				28E0B4A61C3A676C00029724 /* AppDelegate.m */,
-				28E0B4A81C3A676C00029724 /* ViewController.h */,
-				28E0B4A91C3A676C00029724 /* ViewController.m */,
-				28E0B4AB1C3A676C00029724 /* Main.storyboard */,
 				28E0B4AE1C3A676C00029724 /* Assets.xcassets */,
-				28E0B4B01C3A676C00029724 /* LaunchScreen.storyboard */,
 				28E0B4B31C3A676C00029724 /* Info.plist */,
 				28E0B4A21C3A676C00029724 /* Supporting Files */,
 			);
@@ -138,6 +136,103 @@
 				28E0B4C91C3A676C00029724 /* Info.plist */,
 			);
 			path = AIInsoleUITests;
+			sourceTree = "<group>";
+		};
+		28E0B4D51C3A72AB00029724 /* AIHome */ = {
+			isa = PBXGroup;
+			children = (
+				28E0B4D61C3A72AB00029724 /* Model */,
+				28E0B4D71C3A72AB00029724 /* View */,
+				28E0B4D81C3A72AB00029724 /* ViewController */,
+			);
+			path = AIHome;
+			sourceTree = "<group>";
+		};
+		28E0B4D61C3A72AB00029724 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		28E0B4D71C3A72AB00029724 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28E0B4D81C3A72AB00029724 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				28E0B4E41C3A730A00029724 /* AIHomeViewController.h */,
+				28E0B4E51C3A730A00029724 /* AIHomeViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		28E0B4D91C3A72AB00029724 /* AILoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				28E0B4DA1C3A72AB00029724 /* Model */,
+				28E0B4DB1C3A72AB00029724 /* View */,
+				28E0B4DC1C3A72AB00029724 /* ViewController */,
+			);
+			path = AILoginAndRegister;
+			sourceTree = "<group>";
+		};
+		28E0B4DA1C3A72AB00029724 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		28E0B4DB1C3A72AB00029724 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28E0B4DC1C3A72AB00029724 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		28E0B4DD1C3A72DA00029724 /* AIBase */ = {
+			isa = PBXGroup;
+			children = (
+				28E0B4DE1C3A72DA00029724 /* Model */,
+				28E0B4DF1C3A72DA00029724 /* View */,
+				28E0B4E01C3A72DA00029724 /* ViewController */,
+			);
+			path = AIBase;
+			sourceTree = "<group>";
+		};
+		28E0B4DE1C3A72DA00029724 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		28E0B4DF1C3A72DA00029724 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28E0B4E01C3A72DA00029724 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				28E0B4E11C3A72F000029724 /* AIViewController.h */,
+				28E0B4E21C3A72F000029724 /* AIViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,9 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28E0B4B21C3A676C00029724 /* LaunchScreen.storyboard in Resources */,
 				28E0B4AF1C3A676C00029724 /* Assets.xcassets in Resources */,
-				28E0B4AD1C3A676C00029724 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,9 +363,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28E0B4AA1C3A676C00029724 /* ViewController.m in Sources */,
 				28E0B4A71C3A676C00029724 /* AppDelegate.m in Sources */,
+				28E0B4E31C3A72F000029724 /* AIViewController.m in Sources */,
 				28E0B4A41C3A676C00029724 /* main.m in Sources */,
+				28E0B4E61C3A730A00029724 /* AIHomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,25 +400,6 @@
 			targetProxy = 28E0B4C41C3A676C00029724 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		28E0B4AB1C3A676C00029724 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28E0B4AC1C3A676C00029724 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		28E0B4B01C3A676C00029724 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28E0B4B11C3A676C00029724 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		28E0B4CA1C3A676C00029724 /* Debug */ = {
@@ -413,7 +488,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = AIInsole/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.AIInsole;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -424,7 +501,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = AIInsole/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.AIInsole;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -498,6 +577,7 @@
 				28E0B4CE1C3A676C00029724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28E0B4CF1C3A676C00029724 /* Build configuration list for PBXNativeTarget "AIInsoleTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +586,7 @@
 				28E0B4D11C3A676C00029724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28E0B4D21C3A676C00029724 /* Build configuration list for PBXNativeTarget "AIInsoleUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +595,7 @@
 				28E0B4D41C3A676C00029724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

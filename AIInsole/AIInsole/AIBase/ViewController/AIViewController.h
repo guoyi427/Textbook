@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AIViewController.h
 //  AIInsole
 //
 //  Created by guoyi on 16/1/4.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface AIViewController : UIViewController
 
 @end
-
