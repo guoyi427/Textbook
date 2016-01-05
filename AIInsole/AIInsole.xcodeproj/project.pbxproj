@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28B9A75A1C3B6075007CECF0 /* AIBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B9A7591C3B6075007CECF0 /* AIBluetoothManager.m */; };
 		28E0B4A41C3A676C00029724 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0B4A31C3A676C00029724 /* main.m */; };
 		28E0B4A71C3A676C00029724 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0B4A61C3A676C00029724 /* AppDelegate.m */; };
 		28E0B4AF1C3A676C00029724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E0B4AE1C3A676C00029724 /* Assets.xcassets */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28B9A7581C3B6075007CECF0 /* AIBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIBluetoothManager.h; sourceTree = "<group>"; };
+		28B9A7591C3B6075007CECF0 /* AIBluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIBluetoothManager.m; sourceTree = "<group>"; };
 		28E0B49F1C3A676C00029724 /* AIInsole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AIInsole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E0B4A31C3A676C00029724 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28E0B4A51C3A676C00029724 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 		28E0B4D61C3A72AB00029724 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				28B9A7581C3B6075007CECF0 /* AIBluetoothManager.h */,
+				28B9A7591C3B6075007CECF0 /* AIBluetoothManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B9A75A1C3B6075007CECF0 /* AIBluetoothManager.m in Sources */,
 				28E0B4A71C3A676C00029724 /* AppDelegate.m in Sources */,
 				28E0B4E31C3A72F000029724 /* AIViewController.m in Sources */,
 				28E0B4A41C3A676C00029724 /* main.m in Sources */,
@@ -490,7 +496,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = AIInsole/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.AIInsole;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -503,7 +509,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = AIInsole/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.AIInsole;
 				PRODUCT_NAME = "$(TARGET_NAME)";
