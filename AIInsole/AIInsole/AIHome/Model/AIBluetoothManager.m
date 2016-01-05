@@ -10,7 +10,7 @@
 
 #import <CoreBluetooth/CoreBluetooth.h>
 
-static NSString *UUID_String = @"1C85D7B7-17FA-4362-82CF-85DD0B76A9A5";
+static NSString *UUID_String = @"1111";
 
 @interface AIBluetoothManager () <CBCentralManagerDelegate,CBPeripheralManagerDelegate>
 {
@@ -52,8 +52,8 @@ static NSString *UUID_String = @"1C85D7B7-17FA-4362-82CF-85DD0B76A9A5";
 - (void)scan {
     [_centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:UUID_String]]
                                             options:@{
-//                                                      CBCentralManagerScanOptionSolicitedServiceUUIDsKey : @[[CBUUID UUIDWithString:UUID_String]],
-                                                      CBCentralManagerScanOptionAllowDuplicatesKey : @YES
+                                                      CBCentralManagerScanOptionSolicitedServiceUUIDsKey : @[[CBUUID UUIDWithString:UUID_String]],
+                                                      CBCentralManagerScanOptionAllowDuplicatesKey : @NO
                                                       }];
 }
 
@@ -160,13 +160,23 @@ static NSString *UUID_String = @"1C85D7B7-17FA-4362-82CF-85DD0B76A9A5";
             didAddService:(CBService *)service
                     error:(NSError *)error {
     if (error) {
-        NSLog(@"add service error = %@",error);
+        NSLog(@"Add service error = %@",error);
         exit(1);
     }
     [_peripheralManager startAdvertising:@{
                                            CBAdvertisementDataLocalNameKey : @"GuoYi",
-                                           CBAdvertisementDataServiceUUIDsKey : [CBUUID UUIDWithString:UUID_String]
+                                           CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:UUID_String]]
                                            }];
+}
+
+- (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral
+                                       error:(NSError *)error {
+    if (error) {
+        NSLog(@"Advertising fail error = %@",error);
+    } else {
+        NSLog(@"Advertising %@",peripheral);
+    }
+    
 }
 
 @end

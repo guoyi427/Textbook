@@ -12,7 +12,9 @@
 #import "AIBluetoothManager.h"
 
 @interface AIHomeViewController ()
-
+{
+    NSTimer *_scanTimer;
+}
 @end
 
 @implementation AIHomeViewController
@@ -37,6 +39,8 @@
     [startAdvertisingButton setTitle:@"广播" forState:UIControlStateNormal];
     [startAdvertisingButton addTarget:self action:@selector(startAdvertisingButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:startAdvertisingButton];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,11 +51,22 @@
 #pragma mark - Button Action
 
 - (void)scanButtonAction {
-    [[AIBluetoothManager sharedBluetooth] scan];
+    if (_scanTimer) {
+        [_scanTimer invalidate];
+        _scanTimer = nil;
+    }
+    _scanTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(scanTimerAction) userInfo:nil repeats:YES];
 }
 
 - (void)startAdvertisingButtonAction {
     [[AIBluetoothManager sharedBluetooth] startAdvertising];
+}
+
+#pragma mark - Private Methods
+
+- (void)scanTimerAction {
+    NSLog(@"__%s__",__FUNCTION__);
+    [[AIBluetoothManager sharedBluetooth] scan];
 }
 
 @end
