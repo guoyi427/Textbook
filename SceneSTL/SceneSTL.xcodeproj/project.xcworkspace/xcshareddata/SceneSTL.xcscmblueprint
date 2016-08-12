@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BFE077AE6D04535D05F4804BFCC2FB0F3A829F73",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DB328B4CA328192361C6C488DBFE61BCE85C21A9" : 0,
+    "BFE077AE6D04535D05F4804BFCC2FB0F3A829F73" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2D084176-1672-4AF4-93EF-5A07C474BB7C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DB328B4CA328192361C6C488DBFE61BCE85C21A9" : "",
+    "BFE077AE6D04535D05F4804BFCC2FB0F3A829F73" : "Textbook\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SceneSTL",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SceneSTL\/SceneSTL.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/guoyi427\/Textbook.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BFE077AE6D04535D05F4804BFCC2FB0F3A829F73"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/guoyi427\/FirstAttention.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DB328B4CA328192361C6C488DBFE61BCE85C21A9"
+    }
+  ]
+}
